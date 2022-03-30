@@ -1,0 +1,45 @@
+.nav-title {
+    font-size: 2rem;
+    font-family: cursive;
+    font-weight: bold;
+}
+
+.nav-title .letter-1 {
+    color: var(--primary-darker);
+}
+
+.nav-title .letter-2 {
+    color: var(--info-txt);
+}
+
+.nav-title .letter-3 {
+    color: var(--secondary-darker);
+}
+
+.nav-title .letter-4 {
+    color: var(--contrast-light);
+}
+
+.nav-title .letter-5 {
+    color: var(--info-bg);
+}
+
+.nav-title .letter-6 {
+    color: var(--white-color);
+}
+
+.nav-title .letter-7 {
+    color: var(--danger-bg);
+}
+
+.nav-title .letter-8 {
+    color: var(--warning-bg);
+}
+
+.nav-title .letter-9 {
+    color: var(--star-hover);
+}
+
+.nav-title .letter-10 {
+    color: var(--success-bg);
+}

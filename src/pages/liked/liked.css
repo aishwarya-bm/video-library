@@ -1,0 +1,25 @@
+.wishlist-container {
+    margin: 2rem;
+}
+
+.product-wishlist {
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    justify-items: center;
+}
+
+.wishlist .card-like {
+    color: var(--error-txt);
+    font-weight: 600;
+}
+
+.wishlist-container::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+.wishlist-container::-webkit-scrollbar-track {
+    background: var(--grey-bg);
+}
+
+.wishlist-container::-webkit-scrollbar-thumb {
+    background: var(--gold-color);
+}

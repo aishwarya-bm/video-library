@@ -1,0 +1,13 @@
+body .nav-container {
+    /* background-color: var(--secondary-light); */
+    background-color: var(--primary-darker);
+}
+
+.nav-container {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.nav-item {
+    padding: .5rem;
+}
