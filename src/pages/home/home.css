@@ -1,0 +1,23 @@
+.home-img {
+    height: 85vh;
+}
+
+.home-welcome {
+    color: var(--helper-color);
+    letter-spacing: 2px;
+    top: 40%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    font-family: cursive;
+}
+
+@media only screen and (max-width:550px) {
+    .home-img {
+        height: 65vh;
+    }
+
+    .home-welcome {
+        top: 30%;
+    }
+}
