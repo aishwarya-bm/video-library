@@ -1,3 +1,3 @@
-export default function Videolist() {
+export function Videolist() {
   return <></>;
 }

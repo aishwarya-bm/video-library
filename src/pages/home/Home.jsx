@@ -3,7 +3,7 @@ import Header from "../../components/header/Header";
 import Categories from "../../components/categories/Categories";
 import "./home.css";
 
-export default function Home() {
+export function Home() {
   return (
     <div>
       <Header />

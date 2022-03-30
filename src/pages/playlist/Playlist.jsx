@@ -1,3 +1,3 @@
-export default function Playlist() {
+export function Playlist() {
   return <></>;
 }

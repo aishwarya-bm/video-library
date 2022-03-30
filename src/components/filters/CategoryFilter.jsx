@@ -1,78 +1,67 @@
-
+import "./category-filter.css";
 export default function CategoryFilter() {
-  const { state: stateFilter, dispatch: dispatchFilter } = useFilterProducts();
   return (
     <>
-      <h5>Category</h5>
       <ul className="list list-no-bullet">
         <li>
           <input
             type="checkbox"
-            id="brushes"
-            name="brushes"
-            onChange={() => {
-              
-            }}
+            id="ted"
+            name="ted"
+            onChange={() => {}}
             checked={{}}
           />
-          <label htmlFor="brushes">Brushes</label>
+          <label htmlFor="ted">TED</label>
         </li>
         <li>
           <input
             type="checkbox"
-            id="colours"
-            name="colours"
-            onChange={() =>
-             {}
-            }
+            id="movies"
+            name="movies"
+            onChange={() => {}}
             checked={{}}
           />
-          <label htmlFor="colours">Colours</label>
+          <label htmlFor="movies">Movies</label>
         </li>
         <li>
           <input
             type="checkbox"
-            id="papers"
-            name="papers"
-            onChange={() =>{
-            }}
+            id="music"
+            name="music"
+            onChange={() => {}}
             checked={{}}
           />
-          <label htmlFor="papers">Papers</label>
+          <label htmlFor="music">Music</label>
         </li>
         <li>
           <input
             type="checkbox"
-            id="sketch"
-            name="sketch"
-            onChange={() =>
-              
-            }
+            id="comedy"
+            name="comedy"
+            onChange={() => {}}
             checked={{}}
           />
-          <label htmlFor="sketch">Sketch</label>
+          <label htmlFor="comedy">Comedy</label>
         </li>
         <li>
           <input
             type="checkbox"
-            id="canvas"
-            name="canvas"
-            onChange={() =>
-            }
+            id="sports"
+            name="sports"
+            onChange={() => {}}
             checked={{}}
           />
-          <label htmlFor="canvas">Canvas</label>
+          <label htmlFor="sports">Sports</label>
         </li>
         <li>
           <input
             type="checkbox"
-            id="medium"
-            name="medium"
-            onChange={() =>{}
-            }
+            id="learning"
+            name="learning"
+            onChange={() => {}}
             checked={{}}
           />
-          <label htmlFor="medium">Mediums</label>
+          <label htmlFor="learning">Learning</label>
         </li>
       </ul>
     </>

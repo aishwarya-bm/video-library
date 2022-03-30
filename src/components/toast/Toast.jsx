@@ -1,7 +1,7 @@
 import { Slide, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function Toast({ message, type }) {
+export function Toast({ message, type }) {
   return toast(message, {
     position: "bottom-right",
     autoClose: 3000,
