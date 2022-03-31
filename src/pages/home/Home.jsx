@@ -5,7 +5,7 @@ import { Categories, Header, SideNav } from "../../components";
 
 export function Home() {
   return (
-    <div>
+    <>
       <Header />
       <SideNav />
       <main className="home-main">
@@ -23,6 +23,6 @@ export function Home() {
         </div>
         <Categories />
       </main>
-    </div>
+    </>
   );
 }

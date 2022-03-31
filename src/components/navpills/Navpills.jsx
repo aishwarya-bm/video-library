@@ -11,7 +11,7 @@ export function Navpills() {
           </li>
 
           <li>
-            <Link to="/signup" className=" btn btn-link nav-btn">
+            <Link to="/signup">
               <i className="fa fas fa-user btn btn-link nav-btn" />
             </Link>
           </li>

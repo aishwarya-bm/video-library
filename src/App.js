@@ -4,7 +4,7 @@ import {Home,History,WatchLater,Liked,ErrorPage,Videolist, LandingPage } from ".
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Routes>
      <Route path="/" element={ <Home/> }></Route> 
      <Route path="/signup" element={<LandingPage />} ></Route>
@@ -16,7 +16,7 @@ function App() {
      <Route path="/explore/:categoryName" element={<Liked />} ></Route>
      <Route path="*" element={<ErrorPage />} ></Route>
     </Routes>   
-    </div>  
+    </>  
   );
 }
 
