@@ -1,28 +1,29 @@
 import "../../App.css";
-import Header from "../../components/header/Header";
-import Categories from "../../components/categories/Categories";
+import homepage5 from "../../assets/homepage5.jpg";
 import "./home.css";
+import { Categories, Header, SideNav } from "../../components";
 
 export function Home() {
   return (
-    <div>
+    <>
       <Header />
+      <SideNav />
+      <main className="home-main">
+        <div className="home-banner p-rel">
+          <img
+            className="home-img"
+            alt="banner"
+            src="https://assets.nflxext.com/ffe/siteui/vlv3/d0982892-13ac-4702-b9fa-87a410c1f2da/db219e1b-a9a8-43d7-befa-723b8a6164c1/IN-en-20220321-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+          />
 
-      <main>
-        <div className="p-rel">
-          <img src={{}} className="img-rsp home-img" alt="home-img" />
-          <div className="home-welcome text-center p-abs">
-            <h3></h3>
-            <button
-              className="fa fa-solid btn btn-secondary"
-              onClick={() => {}}
-            >
-              SHOP NOW
-            </button>
+          <div className="home-welcome p-abs">
+            <div className="text-center">
+              Welcome to <span className="banner-title">Videoverse</span>
+            </div>
           </div>
         </div>
         <Categories />
       </main>
-    </div>
+    </>
   );
 }

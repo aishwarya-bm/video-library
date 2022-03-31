@@ -1,4 +1,4 @@
-export default function Search() {
+export function Search() {
   return (
     <>
       <div className="d-flex p-rel">

@@ -1,23 +1,48 @@
+.home-banner{
+        margin: 1rem;
+        padding: 1rem;
+        align-items: center;
+}
+
 .home-img {
-    height: 85vh;
+    /* height: 65vh;  */
+}
+
+.home-video{
+    height: 65vh;
 }
 
 .home-welcome {
-    color: var(--helper-color);
-    letter-spacing: 2px;
-    top: 40%;
+    color:var(--contrast-light);
+    top: 35%;
     margin: auto;
     left: 0;
     right: 0;
-    font-family: cursive;
+    background-color: #000000ad;
+    font-family: 'Dancing Script',
+    cursive;
+    letter-spacing: 2px;
+    font-size: 2.5rem;
 }
 
-@media only screen and (max-width:550px) {
+.home-main{
+    margin-left: 5rem; 
+    border-left: 1px solid white 
+}
+.banner-title{
+    color: var(--primary-lighter);
+}
+@media only screen and (max-width:700px) {
+    .home-main {
+        margin-left: 0;
+        border:0
+    }
+
     .home-img {
         height: 65vh;
     }
 
     .home-welcome {
-        top: 30%;
+        top: 40%;
     }
 }

@@ -1,51 +1,94 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&display=swap');
+
+body {
+  font-family: 'Roboto',
+    sans-serif;
+    background-color: var(--black-color);
+    color: var(--white-color)
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nav-container {
+  background-color: var(--secondary-color);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.nav-brand-name {
+  font-family: cursive;
+}
+
+.btn-active {
+  font-weight: bolder;
+  border: 1px solid var(--white-color);
+}
+
+.create-account-link:hover {
+  background-color: transparent;
+}
+
+.card {
+  padding-bottom: 0.5rem;
+  box-shadow: none;
+  background-color: var(--black-color);
+}
+
+.card img {
+  height: 10rem;
+  width: 10rem;
+  /* border-bottom: 1px solid; */
+}
+
+.card-content {
+  flex: 0;
+}
+
+.card button {
+  padding: 0.35rem;
+}
+
+.card .card-btn {
+  color:var(--primary-lighter)
+}
+
+.card-hor {
+  width: 25rem;
+}
+
+.card-hor .card-media {
+  align-self: center;
+  border-bottom: 0;
+  height: auto;
+}
+
+.card-hor .card-data {
+  padding: 0 .5rem;
+}
+
+.card-hor .product-rating {
+  align-self: baseline;
+}
+
+@media screen and (min-width:550px) and (max-width:700px) {
+  .nav-container {
+    flex-direction: column;
   }
 }
 
-.App-header {
-  background-color: #22201c;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
+@media screen and (max-width:550px) {
+  .signup-body {
+    background: none;
+  }
 
-.App-link {
-  color: #61dafb;
-}
+  .signup-container {
+    margin: auto;
+    align-items: baseline;
+    justify-content: center;
+  }
 
-.brand-title {
-  font-size: 3rem;
-  color: #d9d9d9;
-}
+  .signup-section {
+    background-color: transparent;
+    margin-top: 0;
+  }
 
-.brand-title span {
-  color: #ffde59;
-}
-
-.brand-description {
-  font-size: 1.4rem;
-}
-
-.links {
-  display: flex;
-}
-
-.links a {
-  color: #d9d9d9;
-  font-size: 1.2rem;
-  margin: 1rem;
+  .card-hor {
+    width: 20rem;
+  }
 }

@@ -1,0 +1,12 @@
+.sidenav-pills {
+    margin: 1rem;
+}
+
+@media screen and (max-width:700px) {
+    .sidenav-pills {
+        flex-direction: row;
+        justify-content: center;
+        position: static;
+        margin: 0;
+    }
+}
