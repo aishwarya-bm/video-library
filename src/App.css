@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&display=swap');
 
+:root{
+  --transparent-darkblack: hsla(0, 0%, 0%, 0.678);
+}
+
 body {
   font-family: 'Roboto',
     sans-serif;
@@ -20,7 +24,7 @@ body {
   border: 1px solid var(--white-color);
 }
 
-.create-account-link:hover {
+.user-account-link:hover {
   background-color: transparent;
 }
 

@@ -1,5 +1,5 @@
 body .nav-container {
-    background-color: transparent;
+    background-color: var(--transparent-darkblack);
 }
 
 .nav-container {

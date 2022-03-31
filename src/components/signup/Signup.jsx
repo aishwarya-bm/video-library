@@ -1,3 +1,120 @@
-export function Signup() {
-  return <></>;
+import { useState } from "react";
+import "./signup.css";
+
+export function Signup({ setIsSignUp }) {
+  const [signupForm, setSignupForm] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
+  });
+  const changeHandler = event => {
+    event.preventDefault();
+    setSignupForm(() => ({
+      ...signupForm,
+      [event.target.name]: event.target.value,
+    }));
+  };
+  const [showPassword, setShowPassword] = useState(false);
+  const toggleShowPassword = e => {
+    e.preventDefault();
+    setShowPassword(() => (showPassword ? false : true));
+  };
+
+  const handleSignupSubmit = e => {
+    e.preventDefault();
+  };
+
+  return (
+    <>
+      <section className="signup-section d-grid" id="signup-section">
+        <h3 className="text-center">Sign-up</h3>
+        <form className="d-grid grid-gap" onSubmit={e => handleSignupSubmit(e)}>
+          <div className="d-grid">
+            <label htmlFor="firstname">
+              First name
+              <span style={{ color: "red" }}>*</span>
+            </label>
+            <input
+              required
+              type="text"
+              placeholder="enter your first name"
+              id="firstname"
+              name="firstname"
+              value={signupForm.firstname}
+              onChange={e => changeHandler(e)}
+            />
+          </div>
+          <div className="d-grid">
+            <label htmlFor="lastname">
+              Last name
+              <span style={{ color: "red" }}>*</span>
+            </label>
+            <input
+              required
+              type="text"
+              placeholder="enter your last name"
+              id="signupForm.lastname"
+              name="lastname"
+              value={signupForm.lastname}
+              onChange={e => changeHandler(e)}
+            />
+          </div>
+          <div className="d-grid">
+            <label>
+              Email
+              <span style={{ color: "red" }}>*</span>
+            </label>
+            <input
+              required
+              type="text"
+              placeholder="enter your username"
+              name="email"
+              value={signupForm.email}
+              onChange={e => changeHandler(e)}
+            />
+            <div className="error-message">{} </div>
+          </div>
+          <div className="d-grid p-rel">
+            <label>
+              Password
+              <span style={{ color: "red" }}>*</span>
+            </label>
+            <input
+              required
+              type={showPassword ? "text" : "password"}
+              placeholder="enter your password"
+              name="password"
+              value={signupForm.password}
+              onChange={e => changeHandler(e)}
+            />
+            {showPassword ? (
+              <button
+                disabled={signupForm.password ? false : true}
+                className="fa fa-solid fa-eye btn btn-link"
+                style={{ position: "absolute", right: "0px", top: "20px" }}
+                onClick={e => toggleShowPassword(e)}
+              ></button>
+            ) : (
+              <button
+                disabled={signupForm.password ? false : true}
+                className="fa fa-solid fa-eye-slash btn btn-link"
+                style={{ position: "absolute", right: "0px", top: "20px" }}
+                onClick={e => toggleShowPassword(e)}
+              ></button>
+            )}
+          </div>
+
+          <button className="btn btn-primary">SIGNUP</button>
+        </form>
+        <button
+          className="btn btn-link user-account-link"
+          onClick={() => setIsSignUp(false)}
+        >
+          <i> Have an account? Login &nbsp;</i>
+          <i className="fa fa-solid fa-angle-right"></i>
+        </button>
+      </section>
+    </>
+  );
 }

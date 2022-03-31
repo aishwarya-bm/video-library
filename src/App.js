@@ -1,13 +1,13 @@
 import { Route,Routes } from "react-router-dom";
 import "./App.css";
-import {Home,History,WatchLater,Liked,ErrorPage,Videolist, LandingPage } from "./pages/index";
+import {Home,History,WatchLater,Liked,ErrorPage,Videolist, LoginPage } from "./pages/index";
 
 function App() {
   return (
     <>
       <Routes>
      <Route path="/" element={ <Home/> }></Route> 
-     <Route path="/signup" element={<LandingPage />} ></Route>
+     <Route path="/signup" element={<LoginPage />} ></Route>
      <Route path="/history" element={ <History />} ></Route>
      <Route path="/watchlater" element={<WatchLater />} ></Route>
      <Route path="/playlists" element={<WatchLater />} ></Route>

@@ -1,5 +1,5 @@
 .signup-body {
-    background-image: url("../../assets/homepage2.jpg");
+    background-image: url("../../assets/multimedia.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -10,11 +10,15 @@
 
 .signup-section {
     padding: 1rem;
-    background-color: var(--doc-bg);
+    background-color: var(--transparent-darkblack);
     border-radius: 1rem;
     width: 25rem;
+    margin-top: 2rem;
 }
 
+.signup-section .user-account-link{
+    color: var(--contrast-color);
+}
 
 input[type="number"] {
     border: 1px solid var(--shadow-color);
