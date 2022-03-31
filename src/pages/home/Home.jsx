@@ -10,25 +10,16 @@ export function Home() {
       <SideNav />
       <main className="home-main">
         <div className="home-banner p-rel">
-          {/* testing how this works, will remove later */}
-          {/* <video
-            className="img-rsp home-video"
-            src="https://www.youtube.com/embed/dx4Teh-nv3A"
-            controls="controls"
-            autoPlay={true}
-          /> */}
-          <iframe
-            className="img-rsp home-video"
-            src="https://www.youtube.com/embed/dx4Teh-nv3A"
-            frameborder="0"
-            allow="encrypted-media"
-            allowfullscreen
-            title="video"
+          <img
+            className="home-img"
+            src="https://assets.nflxext.com/ffe/siteui/vlv3/d0982892-13ac-4702-b9fa-87a410c1f2da/db219e1b-a9a8-43d7-befa-723b8a6164c1/IN-en-20220321-popsignuptwoweeks-perspective_alpha_website_large.jpg"
           />
-          {/* might uncomment later */}
-          {/* <div className="home-welcome p-abs">
-            <h3 className="text-right"> Welcome to Videoverse!</h3>
-          </div> */}
+
+          <div className="home-welcome p-abs">
+            <div className="text-center">
+              Welcome to <span className="banner-title">Videoverse</span>
+            </div>
+          </div>
         </div>
         <Categories />
       </main>
