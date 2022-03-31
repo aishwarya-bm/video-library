@@ -12,6 +12,7 @@ export function Home() {
         <div className="home-banner p-rel">
           <img
             className="home-img"
+            alt="banner"
             src="https://assets.nflxext.com/ffe/siteui/vlv3/d0982892-13ac-4702-b9fa-87a410c1f2da/db219e1b-a9a8-43d7-befa-723b8a6164c1/IN-en-20220321-popsignuptwoweeks-perspective_alpha_website_large.jpg"
           />
 
