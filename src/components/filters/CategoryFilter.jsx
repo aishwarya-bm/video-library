@@ -1,5 +1,5 @@
 import "./category-filter.css";
-export default function CategoryFilter() {
+export function CategoryFilter() {
   return (
     <>
       <ul className="list list-no-bullet">

@@ -1,18 +1,37 @@
+.home-banner{
+        margin: 1rem;
+        padding: 1rem;
+        align-items: center;
+}
+
 .home-img {
-    height: 85vh;
+    height: 65vh; 
+}
+
+.home-video{
+    height: 65vh;
 }
 
 .home-welcome {
-    color: var(--helper-color);
+    color: var(--black-color);
     letter-spacing: 2px;
-    top: 40%;
+    top: 15%;
     margin: auto;
     left: 0;
-    right: 0;
-    font-family: cursive;
+    right: 5%;
 }
 
-@media only screen and (max-width:550px) {
+.home-main{
+    margin-left: 5rem; 
+    border-left: 1px solid white 
+}
+
+@media only screen and (max-width:700px) {
+    .home-main {
+        margin-left: 0;
+        border:0
+    }
+
     .home-img {
         height: 65vh;
     }

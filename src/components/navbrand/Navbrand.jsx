@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
+import { MdVideoLibrary } from "react-icons/md";
 import "./navbrand.css";
 
-export default function Navbrand() {
+export function Navbrand() {
   return (
     <>
-      <div className="nav-brand d-flex">
+      <div className="nav-brand">
         <Link to="/">
-          <div className="nav-title">VideoApp</div>
+          <div className="nav-title d-flex children-center">
+            <MdVideoLibrary className="nav-btn app-icon" size={40} />
+            Videoverse
+          </div>
         </Link>
       </div>
     </>

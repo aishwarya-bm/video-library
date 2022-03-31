@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./categories.css";
 
-export default function Categories() {
+export function Categories() {
   const [categories, setCategories] = useState([]);
   const getCategories = async () => {
     try {
@@ -17,7 +17,13 @@ export default function Categories() {
   return (
     <>
       <div>
-        <h3 className="text-center">CATEGORIES</h3>
+        <div className="d-flex categories-home">
+          <h3 className="categories-home-heading">Browse categories</h3>
+          <Link to="/explore" className="categories-home-all btn btn-link">
+            All
+          </Link>
+        </div>
+
         <div className="d-grid">
           <ul className="category-container d-grid list-no-bullet">
             {categories &&
@@ -25,7 +31,7 @@ export default function Categories() {
                 return (
                   <li key={_id}>
                     <div className="card children-stacked" onClick={() => {}}>
-                      <Link to={{}}>
+                      <Link to={`/explore/${categoryName}`}>
                         <img
                           className="card-media"
                           src={categoryImg}
@@ -34,7 +40,7 @@ export default function Categories() {
                       </Link>
 
                       <Link
-                        to={{}}
+                        to={`/explore/${categoryName}`}
                         className="btn btn-link card-btn text-center"
                       >
                         {categoryName}
@@ -49,3 +55,4 @@ export default function Categories() {
     </>
   );
 }
+// export { Categories };
