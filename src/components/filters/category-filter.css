@@ -1,34 +1,20 @@
-.filter-container {
-    margin: 0 1rem;
+
+.category-select-list{
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin: 1rem 0;
 }
 
-.filter-heading-icon .btn:hover {
-    background-color: transparent;
-    cursor: auto;
+.category-name{
+    border: 2px solid var(--doc-bg);
+    padding: 0.5rem;
+    border-radius: 1rem;
 }
 
-.filter-options {
-    padding: 1rem;
-    height: 75vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    border: 2px solid var(--gold-color);
+.category-name:hover{
+    cursor: pointer;
 }
 
-.filter-options::-webkit-scrollbar {
-    width: 0.3rem;
-}
 
-.filter-options::-webkit-scrollbar-track {
-    background: var(--grey-bg);
-}
 
-.filter-options::-webkit-scrollbar-thumb {
-    background: var(--gold-color);
-}
-
-@media only screen and (max-width:550px) {
-    .filter-options {
-        height: 40vh;
-    }
-}

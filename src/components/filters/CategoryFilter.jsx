@@ -1,67 +1,126 @@
+import { useFilter } from "../../contexts/filter-context/filter-context";
 import "./category-filter.css";
+
 export function CategoryFilter() {
+  const { category, setCategoryValue } = useFilter();
+  const handleChange = categoryName => {
+    setCategoryValue(categoryName);
+  };
+
   return (
     <>
-      <ul className="list list-no-bullet">
+      <ul className="list list-no-bullet d-flex category-select-list">
         <li>
-          <input
-            type="checkbox"
-            id="ted"
-            name="ted"
-            onChange={() => {}}
-            checked={{}}
-          />
-          <label htmlFor="ted">TED</label>
+          <label htmlFor="all" className="category-name">
+            <input
+              type="radio"
+              id="all"
+              name="all"
+              value="all"
+              checked={category === "all"}
+              className="hide"
+              onChange={() => {
+                handleChange("all");
+              }}
+            />
+            All
+          </label>
         </li>
         <li>
-          <input
-            type="checkbox"
-            id="movies"
-            name="movies"
-            onChange={() => {}}
-            checked={{}}
-          />
-          <label htmlFor="movies">Movies</label>
+          <label htmlFor="music" className="category-name">
+            <input
+              type="radio"
+              id="music"
+              name="music"
+              value="music"
+              className="hide"
+              checked={category === "music"}
+              onChange={() => {
+                handleChange("music");
+              }}
+            />
+            Music
+          </label>
         </li>
         <li>
-          <input
-            type="checkbox"
-            id="music"
-            name="music"
-            onChange={() => {}}
-            checked={{}}
-          />
-          <label htmlFor="music">Music</label>
+          <label htmlFor="comedy" className="category-name">
+            <input
+              type="radio"
+              id="comedy"
+              name="comedy"
+              className="hide"
+              checked={category === "comedy"}
+              value="comedy"
+              onChange={() => {
+                handleChange("comedy");
+              }}
+            />
+            Comedy
+          </label>
         </li>
         <li>
-          <input
-            type="checkbox"
-            id="comedy"
-            name="comedy"
-            onChange={() => {}}
-            checked={{}}
-          />
-          <label htmlFor="comedy">Comedy</label>
+          <label htmlFor="ted" className="category-name">
+            <input
+              type="radio"
+              id="ted"
+              name="ted"
+              className="hide"
+              checked={category === "ted"}
+              value="ted"
+              onChange={() => {
+                handleChange("ted");
+              }}
+            />
+            Ted
+          </label>
         </li>
         <li>
-          <input
-            type="checkbox"
-            id="sports"
-            name="sports"
-            onChange={() => {}}
-            checked={{}}
-          />
-          <label htmlFor="sports">Sports</label>
+          <label htmlFor="sports" className="category-name">
+            <input
+              type="radio"
+              id="sports"
+              name="sports"
+              className="hide"
+              checked={category === "sports"}
+              value="sports"
+              onChange={() => {
+                handleChange("sports");
+              }}
+            />
+            Sports
+          </label>
         </li>
         <li>
-          <input
-            type="checkbox"
-            id="learning"
-            name="learning"
-            onChange={() => {}}
-            checked={{}}
-          />
-          <label htmlFor="learning">Learning</label>
+          <label htmlFor="learning" className="category-name">
+            <input
+              type="radio"
+              id="learning"
+              name="learning"
+              className="hide"
+              value="learning"
+              checked={category === "learning"}
+              onChange={() => {
+                handleChange("learning");
+              }}
+            />
+            Learning
+          </label>
+        </li>
+        <li>
+          <label htmlFor="movies" className="category-name">
+            <input
+              type="radio"
+              id="movies"
+              name="movies"
+              className="hide"
+              checked={category === "movies"}
+              value="movies"
+              onChange={() => {
+                handleChange("movies");
+              }}
+            />
+            Movies
+          </label>
         </li>
       </ul>
     </>

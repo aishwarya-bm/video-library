@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
   MdExplore,
   MdHome,
@@ -10,30 +10,58 @@ import {
 import "./sidenav.css";
 
 export function SideNav() {
+  const getActiveStyle = ({ isActive }) =>
+    isActive
+      ? {
+          border: "1px solid var(--info-txt)",
+          boxShadow: "0 0 10px var(--shadow-color)",
+        }
+      : {};
+
   return (
     <div className="sidenav-pills d-flex children-stacked grid-gap p-fixed ">
-      <Link to="/" className="btn btn-link nav-btn ">
+      <NavLink to="/" className="btn btn-link nav-btn " style={getActiveStyle}>
         <MdHome size={25} />
-      </Link>
-      <Link to="/explore" className="btn btn-link nav-btn ">
+      </NavLink>
+      <NavLink
+        to="/explore"
+        className="btn btn-link nav-btn "
+        style={getActiveStyle}
+      >
         <MdExplore size={25} />
-      </Link>
+      </NavLink>
 
-      <Link to="/liked" className="btn btn-link nav-btn ">
+      <NavLink
+        to="/liked"
+        className="btn btn-link nav-btn "
+        style={getActiveStyle}
+      >
         <MdThumbUp size={25} />
-      </Link>
+      </NavLink>
 
-      <Link to="/playlists" className="btn btn-link nav-btn ">
+      <NavLink
+        to="/playlists"
+        className="btn btn-link nav-btn "
+        style={getActiveStyle}
+      >
         <MdPlaylistAdd size={25} />
-      </Link>
+      </NavLink>
 
-      <Link to="/watchlater" className="btn btn-link nav-btn ">
+      <NavLink
+        to="/watchlater"
+        className="btn btn-link nav-btn "
+        style={getActiveStyle}
+      >
         <MdOutlineBookmarkAdd size={25} />
-      </Link>
+      </NavLink>
 
-      <Link to="/history" className="btn btn-link nav-btn ">
+      <NavLink
+        to="/history"
+        className="btn btn-link nav-btn "
+        style={getActiveStyle}
+      >
         <MdHistory size={25} />
-      </Link>
+      </NavLink>
     </div>
   );
 }

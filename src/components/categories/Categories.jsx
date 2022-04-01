@@ -2,9 +2,12 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./categories.css";
+import { useFilter } from "../../contexts/filter-context/filter-context";
 
 export function Categories() {
   const [categories, setCategories] = useState([]);
+
+  const { setCategoryValue } = useFilter();
   const getCategories = async () => {
     try {
       const { data } = await axios.get("/api/categories");
@@ -18,9 +21,14 @@ export function Categories() {
     <>
       <div>
         <div className="d-flex categories-home">
-          <h3 className="categories-home-heading">Browse categories</h3>
-          <Link to="/explore" className="categories-home-all btn btn-link">
-            All
+          <h4 className="categories-home-heading">Browse categories</h4>
+          <Link to="/explore">
+            <button
+              className="categories-home-all"
+              onClick={() => setCategoryValue("all")}
+            >
+              See all
+            </button>
           </Link>
         </div>
 

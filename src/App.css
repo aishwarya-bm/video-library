@@ -28,13 +28,15 @@ body {
 
 .card {
   padding-bottom: 0.5rem;
-  box-shadow: none;
   background-color: var(--black-color);
+  box-shadow: 0 0 12px var(--info-txt);
+  border-radius: 5px;
 }
 
 .card img {
-  height: 10rem;
-  width: 10rem;
+  height: 12rem;
+  width: 15rem;
+  border-radius: 5px;
   /* border-bottom: 1px solid; */
 }
 
@@ -68,13 +70,19 @@ body {
   align-self: baseline;
 }
 
-@media screen and (min-width:550px) and (max-width:700px) {
-  .nav-container {
-    flex-direction: column;
-  }
+.nav-btn{
+  color : var(--primary-dark)
+}
+
+.nav-btn:hover{
+  color: black;
 }
 
 @media screen and (max-width:550px) {
+  .nav-container {
+    flex-direction: column;
+  }
+
   .signup-body {
     background: none;
   }
