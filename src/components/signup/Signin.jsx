@@ -9,15 +9,17 @@ export function Signin({ setIsSignUp }) {
 
   const changeHandler = event => {
     event.preventDefault();
+    const { target } = event;
     setLoginForm(() => ({
       ...loginForm,
-      [event.target.name]: event.target.value,
+      [target.name]: target.value,
     }));
+    console.log(loginForm);
   };
 
   const toggleShowPassword = e => {
     e.preventDefault();
-    setShowPassword(() => (showPassword ? false : true));
+    setShowPassword(showPassword => !showPassword);
   };
 
   const handleLoginSubmit = e => {
@@ -30,7 +32,7 @@ export function Signin({ setIsSignUp }) {
         <h3 className="text-center">Login</h3>
         <form className="d-grid grid-gap" onSubmit={e => handleLoginSubmit(e)}>
           <div className="d-grid">
-            <label>
+            <label htmlFor="email">
               Email
               <span style={{ color: "red" }}>*</span>
             </label>
@@ -44,7 +46,7 @@ export function Signin({ setIsSignUp }) {
             />
           </div>
           <div className="d-grid p-rel">
-            <label>
+            <label htmlFor="password">
               Password
               <span style={{ color: "red" }}>*</span>
             </label>

@@ -10,15 +10,16 @@ export function Signup({ setIsSignUp }) {
   });
   const changeHandler = event => {
     event.preventDefault();
+    const { target } = event;
     setSignupForm(() => ({
       ...signupForm,
-      [event.target.name]: event.target.value,
+      [target.name]: target.value,
     }));
   };
   const [showPassword, setShowPassword] = useState(false);
   const toggleShowPassword = e => {
     e.preventDefault();
-    setShowPassword(() => (showPassword ? false : true));
+    setShowPassword(showPassword => !showPassword);
   };
 
   const handleSignupSubmit = e => {
@@ -61,7 +62,7 @@ export function Signup({ setIsSignUp }) {
             />
           </div>
           <div className="d-grid">
-            <label>
+            <label htmlFor="email">
               Email
               <span style={{ color: "red" }}>*</span>
             </label>
@@ -76,7 +77,7 @@ export function Signup({ setIsSignUp }) {
             <div className="error-message">{} </div>
           </div>
           <div className="d-grid p-rel">
-            <label>
+            <label htmlFor="password">
               Password
               <span style={{ color: "red" }}>*</span>
             </label>
