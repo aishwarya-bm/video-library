@@ -1,11 +1,7 @@
 .home-banner{
-        margin: 1rem;
-        padding: 1rem;
-        align-items: center;
-}
-
-.home-img {
-    /* height: 65vh;  */
+    margin: 1rem;
+    padding: 1rem;
+    align-items: center;
 }
 
 .home-video{
@@ -15,10 +11,10 @@
 .home-welcome {
     color:var(--contrast-light);
     top: 35%;
-    margin: auto;
+    padding: 1rem;
     left: 0;
     right: 0;
-    background-color: #000000ad;
+    background-color: var(--transparent-darkblack);
     font-family: 'Dancing Script',
     cursive;
     letter-spacing: 2px;
