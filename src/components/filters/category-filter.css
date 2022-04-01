@@ -16,5 +16,12 @@
     cursor: pointer;
 }
 
+.category-name-selected{
+    border: 2px solid var(--doc-bg);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    background-color: var(--shadow-color);
+    color: black;
+}
 
 

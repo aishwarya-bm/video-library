@@ -11,7 +11,12 @@ export function CategoryFilter() {
     <>
       <ul className="list list-no-bullet d-flex category-select-list">
         <li>
-          <label htmlFor="all" className="category-name">
+          <label
+            htmlFor="all"
+            className={
+              category === "all" ? "category-name-selected" : "category-name"
+            }
+          >
             <input
               type="radio"
               id="all"
@@ -27,7 +32,12 @@ export function CategoryFilter() {
           </label>
         </li>
         <li>
-          <label htmlFor="music" className="category-name">
+          <label
+            htmlFor="music"
+            className={
+              category === "music" ? "category-name-selected" : "category-name"
+            }
+          >
             <input
               type="radio"
               id="music"
@@ -43,7 +53,12 @@ export function CategoryFilter() {
           </label>
         </li>
         <li>
-          <label htmlFor="comedy" className="category-name">
+          <label
+            htmlFor="comedy"
+            className={
+              category === "comedy" ? "category-name-selected" : "category-name"
+            }
+          >
             <input
               type="radio"
               id="comedy"
@@ -59,7 +74,12 @@ export function CategoryFilter() {
           </label>
         </li>
         <li>
-          <label htmlFor="ted" className="category-name">
+          <label
+            htmlFor="ted"
+            className={
+              category === "ted" ? "category-name-selected" : "category-name"
+            }
+          >
             <input
               type="radio"
               id="ted"
@@ -75,7 +95,12 @@ export function CategoryFilter() {
           </label>
         </li>
         <li>
-          <label htmlFor="sports" className="category-name">
+          <label
+            htmlFor="sports"
+            className={
+              category === "sports" ? "category-name-selected" : "category-name"
+            }
+          >
             <input
               type="radio"
               id="sports"
@@ -91,7 +116,14 @@ export function CategoryFilter() {
           </label>
         </li>
         <li>
-          <label htmlFor="learning" className="category-name">
+          <label
+            htmlFor="learning"
+            className={
+              category === "learning"
+                ? "category-name-selected"
+                : "category-name"
+            }
+          >
             <input
               type="radio"
               id="learning"
@@ -107,7 +139,12 @@ export function CategoryFilter() {
           </label>
         </li>
         <li>
-          <label htmlFor="movies" className="category-name">
+          <label
+            htmlFor="movies"
+            className={
+              category === "movies" ? "category-name-selected" : "category-name"
+            }
+          >
             <input
               type="radio"
               id="movies"
