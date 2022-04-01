@@ -1,5 +1,6 @@
-body .nav-container {
+.nav-container {
     background-color: var(--transparent-darkblack);
+    border-bottom: 1px solid var(--primary-dark);
 }
 
 .nav-container {

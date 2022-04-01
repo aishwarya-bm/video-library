@@ -1,5 +1,4 @@
 .home-banner{
-    margin: 1rem;
     padding: 1rem;
     align-items: center;
 }
@@ -8,9 +7,14 @@
     height: 65vh;
 }
 
+.home-img{
+    height: 88vh;
+    width: 100vw;
+}
+
 .home-welcome {
     color:var(--contrast-light);
-    top: 35%;
+    top: 40%;
     padding: 1rem;
     left: 0;
     right: 0;
@@ -23,7 +27,7 @@
 
 .home-main{
     margin-left: 5rem; 
-    border-left: 1px solid white 
+    /* border-left: 1px solid var(--primary-dark)  */
 }
 .banner-title{
     color: var(--primary-lighter);

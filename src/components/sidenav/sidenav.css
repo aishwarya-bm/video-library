@@ -1,12 +1,25 @@
 .sidenav-pills {
     margin: 1rem;
+    background-color: var(--black-color);
+    top: 20%;
+}
+
+.active-navitem{
+    color: var(--contrast-dark);
 }
 
 @media screen and (max-width:700px) {
     .sidenav-pills {
         flex-direction: row;
         justify-content: center;
-        position: static;
         margin: 0;
+        border-top: 1px solid var(--primary-dark);
+        border-bottom: 1px solid var(--primary-dark);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 5;
+        top: auto;
     }
 }
