@@ -71,7 +71,7 @@ body {
 }
 
 .nav-btn{
-  color : var(--primary-dark)
+  /* color : var(--primary-dark) */
 }
 
 .nav-btn:hover{
