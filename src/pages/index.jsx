@@ -6,3 +6,4 @@ export { Playlist } from "./playlist/Playlist";
 export { Videolist } from "./videolist/Videolist";
 export { WatchLater } from "./watchlater/WatchLater";
 export { ErrorPage } from "./errorpage/ErrorPage";
+export { VideoPage } from "./videolist/VideoPage";

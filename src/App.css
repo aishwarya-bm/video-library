@@ -78,6 +78,16 @@ body {
   color: black;
 }
 
+.btn-primary{
+  background-color: var(--primary-darker);
+  box-shadow: none;
+}
+
+input[type="text"],input[type="password"],textarea{
+  background-color: var(--black-color);
+    color: white;
+}
+
 @media screen and (max-width:550px) {
   .nav-container {
     flex-direction: column;
