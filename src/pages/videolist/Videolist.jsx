@@ -4,10 +4,12 @@ import { MdMoreVert } from "react-icons/md";
 import axios from "axios";
 import "./videolist.css";
 import { useFilter } from "../../contexts/filter-context/filter-context";
+import { Link, useNavigate } from "react-router-dom";
 
 export function Videolist() {
   const [videolist, setVideolist] = useState([]);
   const { category } = useFilter();
+  const navigate = useNavigate();
 
   async function getVideosList() {
     try {
@@ -37,12 +39,11 @@ export function Videolist() {
         <CategoryFilter />
         <ul className="video-list list-no-bullet d-grid grid-gap">
           {filteredVideos &&
-            filteredVideos?.map(({ _id, title, thumnailHigh }) => {
+            filteredVideos?.map(({ _id, title, videoId, thumnailHigh }) => {
               return (
                 <li key={_id} className="card children-stacked card-dismiss">
                   <div className="card-media">
                     <img src={thumnailHigh.url} alt="card-img" />
-                    {/* <button className="far fa-heart btn card-like"></button> */}
                   </div>
                   <div className="card-head d-flex">
                     <div className="card-header children-stacked">
@@ -57,8 +58,15 @@ export function Videolist() {
                     <button className="btn btn-link icon-more">
                       <MdMoreVert size={25} />
                     </button>
-                    {/* <i className="fa fas fa-ellipsis btn-icon icon-more"></i> */}
                   </div>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => {
+                      navigate(`/explore/${_id}`);
+                    }}
+                  >
+                    watch now
+                  </button>
                 </li>
               );
             })}

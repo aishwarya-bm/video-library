@@ -1,6 +1,6 @@
 import { Route,Routes } from "react-router-dom";
 import "./App.css";
-import {Home,History,WatchLater,Liked,ErrorPage,Videolist, LoginPage } from "./pages/index";
+import {Home,History,WatchLater,Liked,ErrorPage,Videolist, LoginPage, VideoPage } from "./pages/index";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
      <Route path="/playlists" element={<WatchLater />} ></Route>
      <Route path="/explore" element={<Videolist />} ></Route>
      <Route path="/liked" element={<Liked />} ></Route>
-     <Route path="/explore/:categoryName" element={<Liked />} ></Route>
+     <Route path="/explore/:id" element={<VideoPage />} ></Route>
      <Route path="*" element={<ErrorPage />} ></Route>
     </Routes>   
     </>  
