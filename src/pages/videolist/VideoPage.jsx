@@ -5,7 +5,7 @@ import "./videolist.css";
 import "./videopage.css";
 import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
-import { MdArrowBack } from "react-icons/md";
+import { MdThumbUp, MdPlaylistAdd, MdBookmark } from "react-icons/md";
 
 export function VideoPage() {
   const [video, setVideo] = useState({});
@@ -59,6 +59,18 @@ export function VideoPage() {
           </div>
         </div>
 
+        <div className="d-flex">
+          <button className="btn btn-link video-action-btn">
+            <MdThumbUp size={25} />
+          </button>
+          <button className="btn btn-link video-action-btn">
+            <MdPlaylistAdd size={25} />
+          </button>
+
+          <button className="btn btn-link video-action-btn">
+            <MdBookmark size={25} />
+          </button>
+        </div>
         <div>
           <div className="notes-section d-flex children-stacked grid-gap">
             <h4 className="notes-title">Notes</h4>
