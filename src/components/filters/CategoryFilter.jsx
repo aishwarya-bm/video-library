@@ -1,164 +1,70 @@
-import { useFilter } from "../../contexts/filter-context/filter-context";
+import { NavLink } from "react-router-dom";
 import "./category-filter.css";
 
 export function CategoryFilter() {
-  const { category, setCategoryValue } = useFilter();
-  const handleChange = categoryName => {
-    setCategoryValue(categoryName);
-  };
+  const getActiveStyle = ({ isActive }) =>
+    isActive
+      ? {
+          border: "2px solid var(--doc-bg)",
+          borderRadius: "1rem",
+          backgroundColor: "var(--shadow-color)",
+          color: "black",
+          fontWeight: "bold",
+        }
+      : {};
 
   return (
     <>
       <ul className="list list-no-bullet d-flex category-select-list">
-        <li>
-          <label
-            htmlFor="all"
-            className={
-              category === "all" ? "category-name-selected" : "category-name"
-            }
-          >
-            <input
-              type="radio"
-              id="all"
-              name="all"
-              value="all"
-              checked={category === "all"}
-              className="hide"
-              onChange={() => {
-                handleChange("all");
-              }}
-            />
-            All
-          </label>
-        </li>
-        <li>
-          <label
-            htmlFor="music"
-            className={
-              category === "music" ? "category-name-selected" : "category-name"
-            }
-          >
-            <input
-              type="radio"
-              id="music"
-              name="music"
-              value="music"
-              className="hide"
-              checked={category === "music"}
-              onChange={() => {
-                handleChange("music");
-              }}
-            />
-            Music
-          </label>
-        </li>
-        <li>
-          <label
-            htmlFor="comedy"
-            className={
-              category === "comedy" ? "category-name-selected" : "category-name"
-            }
-          >
-            <input
-              type="radio"
-              id="comedy"
-              name="comedy"
-              className="hide"
-              checked={category === "comedy"}
-              value="comedy"
-              onChange={() => {
-                handleChange("comedy");
-              }}
-            />
-            Comedy
-          </label>
-        </li>
-        <li>
-          <label
-            htmlFor="ted"
-            className={
-              category === "ted" ? "category-name-selected" : "category-name"
-            }
-          >
-            <input
-              type="radio"
-              id="ted"
-              name="ted"
-              className="hide"
-              checked={category === "ted"}
-              value="ted"
-              onChange={() => {
-                handleChange("ted");
-              }}
-            />
-            Ted
-          </label>
-        </li>
-        <li>
-          <label
-            htmlFor="sports"
-            className={
-              category === "sports" ? "category-name-selected" : "category-name"
-            }
-          >
-            <input
-              type="radio"
-              id="sports"
-              name="sports"
-              className="hide"
-              checked={category === "sports"}
-              value="sports"
-              onChange={() => {
-                handleChange("sports");
-              }}
-            />
-            Sports
-          </label>
-        </li>
-        <li>
-          <label
-            htmlFor="learning"
-            className={
-              category === "learning"
-                ? "category-name-selected"
-                : "category-name"
-            }
-          >
-            <input
-              type="radio"
-              id="learning"
-              name="learning"
-              className="hide"
-              value="learning"
-              checked={category === "learning"}
-              onChange={() => {
-                handleChange("learning");
-              }}
-            />
-            Learning
-          </label>
-        </li>
-        <li>
-          <label
-            htmlFor="movies"
-            className={
-              category === "movies" ? "category-name-selected" : "category-name"
-            }
-          >
-            <input
-              type="radio"
-              id="movies"
-              name="movies"
-              className="hide"
-              checked={category === "movies"}
-              value="movies"
-              onChange={() => {
-                handleChange("movies");
-              }}
-            />
-            Movies
-          </label>
-        </li>
+        <NavLink
+          to="/explore/all"
+          style={getActiveStyle}
+          className="category-name"
+        >
+          All
+        </NavLink>
+        <NavLink
+          to="/explore/music"
+          style={getActiveStyle}
+          className="category-name"
+        >
+          Music
+        </NavLink>
+        <NavLink
+          to="/explore/comedy"
+          style={getActiveStyle}
+          className="category-name"
+        >
+          Comedy
+        </NavLink>
+        <NavLink
+          to="/explore/ted"
+          style={getActiveStyle}
+          className="category-name"
+        >
+          ted
+        </NavLink>
+        <NavLink
+          to="/explore/sports"
+          style={getActiveStyle}
+          className="category-name"
+        >
+          Sports
+        </NavLink>
+        <NavLink
+          to="/explore/learning"
+          style={getActiveStyle}
+          className="category-name"
+        >
+          Learning
+        </NavLink>
+        <NavLink
+          to="/explore/movies"
+          style={getActiveStyle}
+          className="category-name"
+        >
+          Movies
+        </NavLink>
       </ul>
     </>
   );

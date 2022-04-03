@@ -3,13 +3,12 @@ import { CategoryFilter, Header, SideNav } from "../../components";
 import { MdMoreVert } from "react-icons/md";
 import axios from "axios";
 import "./videolist.css";
-import { useFilter } from "../../contexts/filter-context/filter-context";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 export function Videolist() {
   const [videolist, setVideolist] = useState([]);
-  const { category } = useFilter();
   const navigate = useNavigate();
+  const { categoryName } = useParams();
 
   async function getVideosList() {
     try {
@@ -21,9 +20,9 @@ export function Videolist() {
   }
 
   const applyCategoryFilter = () => {
-    return category === "all"
+    return categoryName === "all"
       ? videolist
-      : videolist.filter(item => item.category === category);
+      : videolist.filter(item => item.category === categoryName);
   };
 
   const filteredVideos = applyCategoryFilter();
@@ -62,7 +61,7 @@ export function Videolist() {
                   <button
                     className="btn btn-primary"
                     onClick={() => {
-                      navigate(`/explore/${_id}`);
+                      navigate(`/explore/video/${_id}`);
                     }}
                   >
                     watch now

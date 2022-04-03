@@ -8,20 +8,12 @@
 
 .category-name{
     border: 2px solid var(--doc-bg);
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     border-radius: 1rem;
 }
 
 .category-name:hover{
     cursor: pointer;
-}
-
-.category-name-selected{
-    border: 2px solid var(--doc-bg);
-    padding: 0.5rem;
-    border-radius: 1rem;
-    background-color: var(--shadow-color);
-    color: black;
 }
 
 
