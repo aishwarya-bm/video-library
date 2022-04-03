@@ -31,9 +31,29 @@
 
 .icon-more:hover{
     color: var(--black-color);
-    border-radius: 50%;
 }
 
+.video-item-actions{
+    z-index: 10;
+    background-color: var(--primary-darker);
+    right: 25px;
+    top: 25px;
+}
+
+
+.video-menu-item{
+    align-items: center;
+    background-color: var(--primary-darker);
+    border: 0;
+    color: var(--white-color);
+}
+
+.video-menu-item:hover{
+    align-items: center;
+    background-color: var(--primary-lighter);
+    border: 0;
+    color: var(--black-color);
+}
 
 @media only screen and (max-width:700px) {
     .video-container {

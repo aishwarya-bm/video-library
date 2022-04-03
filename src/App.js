@@ -1,4 +1,5 @@
 import { Route,Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import "./App.css";
 import {Home,History,WatchLater,Liked,ErrorPage,Videolist, LoginPage, VideoPage, Playlist, PlaylistPage } from "./pages/index";
 
@@ -17,7 +18,8 @@ function App() {
      <Route path="/explore/:categoryName" element={<Videolist />} ></Route>
      <Route path="/explore/video/:id" element={<VideoPage />} ></Route>
      <Route path="*" element={<ErrorPage />} ></Route>
-    </Routes>   
+    </Routes> 
+    <ToastContainer/>  
     </>  
   );
 }
