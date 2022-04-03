@@ -3,6 +3,7 @@ import axios from "axios";
 import { MdDelete } from "react-icons/md";
 import { Header, SideNav } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
+import "./history.css";
 
 export function History() {
   const [likedVideos, setLikedVideos] = useState([]);
@@ -22,7 +23,10 @@ export function History() {
       <SideNav />
 
       <div className="videolist-container d-grid">
-        <h4 className="text-center">History</h4>
+        <div className="d-flex history-header">
+          <h4 className="text-center">History</h4>
+          <button className="btn btn-link">Clear all</button>
+        </div>
         <ul className="custom-video-list list-no-bullet d-grid ">
           {likedVideos &&
             likedVideos?.map(
