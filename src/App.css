@@ -84,7 +84,7 @@ body {
 
 input[type="text"],input[type="password"],textarea{
   background-color: var(--black-color);
-    color: white;
+    color: var(--white-color);
 }
 
 .videolist-container{
@@ -108,7 +108,7 @@ input[type="text"],input[type="password"],textarea{
 }
 
 .icon-trash:hover{
-    color: black;
+    color: var(--black-color);
     border-radius: 50%;
 
 }
