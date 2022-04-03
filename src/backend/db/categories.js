@@ -8,45 +8,39 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "Music",
+    categoryName: "music",
     categoryImg:"https://images.unsplash.com/photo-1506157786151-b8491531f063?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
     description:
       "Computer programming is the process of designing and building an executable computer program to accomplish a specific computing",
   },
   {
     _id: uuid(),
-    categoryName: "Comedy",categoryImg:"https://images.unsplash.com/photo-1543584756-8f40a802e14f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    categoryName: "comedy",categoryImg:"https://images.unsplash.com/photo-1543584756-8f40a802e14f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
     description:
       "Front-end web development, also known as client-side development is the practice of producing HTML, CSS and JavaScript for a website or Web Application",
   },
   {
     _id: uuid(),
-    categoryName: "TED",categoryImg:"https://images.unsplash.com/photo-1516280440614-37939bbacd81?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    categoryName: "ted",categoryImg:"https://images.unsplash.com/photo-1516280440614-37939bbacd81?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
     description:
       "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
   },
   {
     _id: uuid(),
-    categoryName: "Sports",categoryImg:"https://cdn.pixabay.com/photo/2019/06/16/21/48/cups-4278774_1280.jpg",
+    categoryName: "sports",categoryImg:"https://cdn.pixabay.com/photo/2019/06/16/21/48/cups-4278774_1280.jpg",
     description:
       "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
   },
   {
     _id: uuid(),
-    categoryName: "Learning",categoryImg:"https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=628&q=80",
+    categoryName: "learning",categoryImg:"https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=628&q=80",
     description:
       "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
   },
   {
     _id: uuid(),
-    categoryName: "Movies",categoryImg:"https://cdn.pixabay.com/photo/2020/11/20/00/08/clapperboard-5760216_1280.jpg",
+    categoryName: "movies",categoryImg:"https://cdn.pixabay.com/photo/2020/11/20/00/08/clapperboard-5760216_1280.jpg",
     description:
       "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
   },
-  // {
-  //   _id: uuid(),
-  //   categoryName: "TED",categoryImg:"",
-  //   description:
-  //     "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
-  // },
 ];

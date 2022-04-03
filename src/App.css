@@ -37,7 +37,6 @@ body {
   height: 12rem;
   width: 15rem;
   border-radius: 5px;
-  /* border-bottom: 1px solid; */
 }
 
 .card-content {
@@ -85,7 +84,47 @@ body {
 
 input[type="text"],input[type="password"],textarea{
   background-color: var(--black-color);
+    color: var(--white-color);
+}
+
+.videolist-container{
+    margin-left: 6rem; 
+    padding: 1rem;
+    flex-wrap: wrap;
+}
+
+.custom-video-list{
+    margin-bottom: 3rem;
+}
+
+.videolist-container .card{
+    position: relative;
+}
+
+ .icon-trash{
+    right: 0;
     color: white;
+    padding: 0.5rem
+}
+
+.icon-trash:hover{
+    color: var(--black-color);
+    border-radius: 50%;
+
+}
+
+.videolist-container .card img{
+    width: 100px;
+    height: 100px;
+    padding-left: 1rem;
+}
+
+.videolist-container .card-hor{
+    width: 90%;
+}
+
+.videolist-container .card-title{
+    padding-right: 1rem;
 }
 
 @media screen and (max-width:550px) {
@@ -111,4 +150,9 @@ input[type="text"],input[type="password"],textarea{
   .card-hor {
     width: 20rem;
   }
+
+  .videolist-container {
+        margin-left: 0;
+        border:0;
+    } 
 }

@@ -4,12 +4,12 @@ import { MdDelete } from "react-icons/md";
 import { Header, SideNav } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
 
-export function Liked() {
-  const [likedVideos, setLikedVideos] = useState([]);
+export function PlaylistPage() {
+  const [playlistVideos, setplaylistVideos] = useState([]);
   async function getVideosList() {
     try {
       const { data } = await axios.get("/api/videos");
-      setLikedVideos(() => data.videos);
+      setplaylistVideos(() => data.videos);
     } catch (e) {
       console.log("error", e);
     }
@@ -22,10 +22,10 @@ export function Liked() {
       <SideNav />
 
       <div className="videolist-container d-grid">
-        <h4 className="text-center">Liked Videos</h4>
+        <h4 className="text-center">My playlist 1</h4>
         <ul className="custom-video-list list-no-bullet d-grid ">
-          {likedVideos &&
-            likedVideos?.map(
+          {playlistVideos &&
+            playlistVideos?.map(
               ({ _id, title, videoId, author, thumnailHigh }) => {
                 return (
                   <Link to={`/explore/video/${_id}`} key={_id}>

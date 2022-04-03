@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import { CategoryFilter, Header, Navpills, SideNav } from "../../components";
-import { MdMoreVert } from "react-icons/md";
+import { Header, SideNav } from "../../components";
 import axios from "axios";
 import "./videolist.css";
 import "./videopage.css";
-import { useFilter } from "../../contexts/filter-context/filter-context";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
+import { MdThumbUp, MdPlaylistAdd, MdBookmark } from "react-icons/md";
 
 export function VideoPage() {
   const [video, setVideo] = useState({});
@@ -27,13 +26,15 @@ export function VideoPage() {
       <SideNav />
 
       <div className="video-container">
-        <div className="video-player d-grid ">
+        <Link to="/explore/all" className="btn btn-link">
+          &lt; &nbsp; All
+        </Link>
+        <div className="video-player d-grid">
           <div className="d-flex children-stacked">
             <ReactPlayer
               controls
               width={"100%"}
-              url="
-            https:controls //www.youtube.com/embed/E7wJTI-1dvQ"
+              url={`https:controls//www.youtube.com/embed/${video.videoId}`}
             />
             <h5>{video.title}</h5>
           </div>
@@ -58,6 +59,18 @@ export function VideoPage() {
           </div>
         </div>
 
+        <div className="d-flex">
+          <button className="btn btn-link video-action-btn">
+            <MdThumbUp size={25} />
+          </button>
+          <button className="btn btn-link video-action-btn">
+            <MdPlaylistAdd size={25} />
+          </button>
+
+          <button className="btn btn-link video-action-btn">
+            <MdBookmark size={25} />
+          </button>
+        </div>
         <div>
           <div className="notes-section d-flex children-stacked grid-gap">
             <h4 className="notes-title">Notes</h4>

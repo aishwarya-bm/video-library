@@ -5,7 +5,7 @@ import {
   MdThumbUp,
   MdPlaylistAdd,
   MdHistory,
-  MdOutlineBookmarkAdd,
+  MdBookmark,
 } from "react-icons/md";
 import "./sidenav.css";
 
@@ -15,6 +15,7 @@ export function SideNav() {
       ? {
           border: "1px solid var(--info-txt)",
           boxShadow: "0 0 10px var(--shadow-color)",
+          color: "var(--primary-light)",
         }
       : {};
 
@@ -24,7 +25,7 @@ export function SideNav() {
         <MdHome size={25} />
       </NavLink>
       <NavLink
-        to="/explore"
+        to="/explore/all"
         className="btn btn-link nav-btn "
         style={getActiveStyle}
       >
@@ -52,7 +53,7 @@ export function SideNav() {
         className="btn btn-link nav-btn "
         style={getActiveStyle}
       >
-        <MdOutlineBookmarkAdd size={25} />
+        <MdBookmark size={25} />
       </NavLink>
 
       <NavLink
