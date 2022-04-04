@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useLogin } from "../../contexts";
+import { createUser } from "../../contexts/login-context/login-utils";
 import "./signup.css";
 
 export function Signup({ setIsSignUp }) {
@@ -7,7 +10,16 @@ export function Signup({ setIsSignUp }) {
     lastname: "",
     email: "",
     password: "",
+    mobile: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
+  const [userErr, setUserErr] = useState({
+    phone: "",
+    email: "",
+  });
+  const navigate = useNavigate();
+  const { dispatchUser } = useLogin();
+
   const changeHandler = event => {
     event.preventDefault();
     const { target } = event;
@@ -16,7 +28,7 @@ export function Signup({ setIsSignUp }) {
       [target.name]: target.value,
     }));
   };
-  const [showPassword, setShowPassword] = useState(false);
+
   const toggleShowPassword = e => {
     e.preventDefault();
     setShowPassword(showPassword => !showPassword);
@@ -24,6 +36,7 @@ export function Signup({ setIsSignUp }) {
 
   const handleSignupSubmit = e => {
     e.preventDefault();
+    createUser(signupForm, setUserErr, setSignupForm, dispatchUser, navigate);
   };
 
   return (
@@ -75,6 +88,9 @@ export function Signup({ setIsSignUp }) {
               onChange={e => changeHandler(e)}
             />
             <div className="error-message">{} </div>
+            {userErr.email && (
+              <div className="error-message">{userErr.email} </div>
+            )}
           </div>
           <div className="d-grid p-rel">
             <label htmlFor="password">
@@ -103,6 +119,24 @@ export function Signup({ setIsSignUp }) {
                 style={{ position: "absolute", right: "0px", top: "20px" }}
                 onClick={e => toggleShowPassword(e)}
               ></button>
+            )}
+          </div>
+          <div className="d-grid">
+            <label>
+              Mobile
+              <span style={{ color: "red" }}>*</span>
+            </label>
+            <input
+              required
+              type="number"
+              placeholder="enter your mobile number"
+              name="mobile"
+              value={signupForm.mobile}
+              onChange={e => changeHandler(e)}
+            />
+
+            {userErr.phone && (
+              <div className="error-message">{userErr.phone} </div>
             )}
           </div>
 
