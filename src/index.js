@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { LoginProvider } from "./contexts";
+import { VideoActionProvider } from "./contexts/wishlistContext/like-context";
 import { makeServer } from "./server";
 
 // Call make Server
@@ -12,7 +13,9 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
     <LoginProvider>
-    <App />
+      <VideoActionProvider>
+        <App />
+      </VideoActionProvider>
     </LoginProvider>
     </BrowserRouter>
   </React.StrictMode>,
