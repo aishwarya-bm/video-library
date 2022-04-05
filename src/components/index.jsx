@@ -1,4 +1,5 @@
 export { Categories } from "./categories/Categories";
+export { Videocard } from "./videocard/Videocard";
 export { CategoryFilter } from "./filters/CategoryFilter";
 export { Header } from "./header/Header";
 export { Navbrand } from "./navbrand/Navbrand";

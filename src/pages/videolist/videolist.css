@@ -10,50 +10,6 @@
     padding: 1rem;
 }
 
-.card-like {
-    position: absolute;
-    right: 10px;
-    top: 5px;
-    background-color: var(--white-color);
-    border-radius: 50%;
-    color: var(--primary-dark);
-    margin: 0.25rem;
-}
-
-.card-title{
-    font-size: 1rem;
-}
-
-.icon-more{
-    align-self: flex-start;
-    color: white;
-}
-
-.icon-more:hover{
-    color: var(--black-color);
-}
-
-.video-item-actions{
-    z-index: 10;
-    background-color: var(--primary-darker);
-    right: 25px;
-    top: 25px;
-}
-
-
-.video-menu-item{
-    align-items: center;
-    background-color: var(--primary-darker);
-    border: 0;
-    color: var(--white-color);
-}
-
-.video-menu-item:hover{
-    align-items: center;
-    background-color: var(--primary-lighter);
-    border: 0;
-    color: var(--black-color);
-}
 
 @media only screen and (max-width:700px) {
     .video-container {
