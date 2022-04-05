@@ -24,16 +24,16 @@ export function Liked() {
           {liked &&
             liked?.map(({ _id, title, author, thumnailHigh }) => {
               return (
-                <div className="card card-hor">
+                <div className="card card-hor" key={_id}>
                   <div className="card-top d-flex">
-                    <Link to={`/explore/video/${_id}`} key={_id}>
+                    <Link to={`/explore/video/${_id}`}>
                       <img
                         className="card-image"
                         src={thumnailHigh.url}
                         alt="video-cover"
                       />
                     </Link>
-                    <Link to={`/explore/video/${_id}`} key={_id}>
+                    <Link to={`/explore/video/${_id}`}>
                       <div className="card-header">
                         <div className="card-title">{title}</div>
                         <div className="card-author gray-text">{author}</div>

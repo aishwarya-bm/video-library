@@ -60,7 +60,7 @@ const addToLiked = async (video,dispatchliked,navigate) => {
     }
   };
 
-const removeFromliked = async (id,dispatchliked,navigate) => {
+const removeFromliked = async (id,dispatchAction,navigate) => {
     const path = `/api/user/likes/${id}`;
     try {
       const response = await axios.delete(path, {
@@ -69,7 +69,7 @@ const removeFromliked = async (id,dispatchliked,navigate) => {
         },
       });
       if (response.status === 200) {
-        dispatchliked({
+        dispatchAction({
           type: "REMOVE_FROM_LIKED",
           payload: response.data.likes,
         });

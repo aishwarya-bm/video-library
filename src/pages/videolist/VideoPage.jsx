@@ -3,13 +3,26 @@ import { Header, SideNav } from "../../components";
 import axios from "axios";
 import "./videolist.css";
 import "./videopage.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
-import { MdThumbUp, MdPlaylistAdd, MdBookmark } from "react-icons/md";
+import {
+  MdThumbUp,
+  MdThumbDown,
+  MdPlaylistAdd,
+  MdBookmark,
+} from "react-icons/md";
+import {
+  addToLiked,
+  isLiked,
+  removeFromliked,
+} from "../../contexts/wishlistContext/like-utils";
+import { useVideoAction } from "../../contexts/wishlistContext/like-context";
 
 export function VideoPage() {
   const [video, setVideo] = useState({});
   const { id } = useParams();
+  const { liked, dispatchAction } = useVideoAction();
+  const navigate = useNavigate();
 
   async function getVideoDetails() {
     try {
@@ -60,9 +73,27 @@ export function VideoPage() {
         </div>
 
         <div className="d-flex">
-          <button className="btn btn-link video-action-btn">
-            <MdThumbUp size={25} />
-          </button>
+          {isLiked(id, liked) ? (
+            <>
+              <button
+                className="btn btn-link video-action-btn highlight-action"
+                onClick={() => {
+                  removeFromliked(id, dispatchAction, navigate);
+                }}
+              >
+                <MdThumbUp size={20} />
+              </button>
+            </>
+          ) : (
+            <button
+              className="btn btn-link video-action-btn"
+              onClick={() => {
+                addToLiked(video, dispatchAction, navigate);
+              }}
+            >
+              <MdThumbUp size={20} />
+            </button>
+          )}
           <button className="btn btn-link video-action-btn">
             <MdPlaylistAdd size={25} />
           </button>

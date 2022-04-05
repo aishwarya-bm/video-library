@@ -57,9 +57,10 @@ export function Videocard({ video }) {
                 <>
                   <button
                     className="d-flex video-menu-item"
-                    onClick={() =>
-                      removeFromliked(video, dispatchAction, navigate)
-                    }
+                    onClick={() => {
+                      setShowMenu(false);
+                      removeFromliked(_id, dispatchAction, navigate);
+                    }}
                   >
                     <MdThumbDown size={20} /> &nbsp;dislike
                   </button>
@@ -67,7 +68,10 @@ export function Videocard({ video }) {
               ) : (
                 <button
                   className="d-flex video-menu-item"
-                  onClick={() => addToLiked(video, dispatchAction, navigate)}
+                  onClick={() => {
+                    setShowMenu(false);
+                    addToLiked(video, dispatchAction, navigate);
+                  }}
                 >
                   <MdThumbUp size={20} />
                   &nbsp; like
