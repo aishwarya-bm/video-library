@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { LoginProvider } from "./contexts";
-import { VideoActionProvider } from "./contexts/wishlistContext/like-context";
+import { VideoActionProvider } from "./contexts/index";
 import { makeServer } from "./server";
 
 // Call make Server

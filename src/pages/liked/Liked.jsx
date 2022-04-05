@@ -2,15 +2,14 @@ import { useEffect } from "react";
 import { MdDelete } from "react-icons/md";
 import { Header, SideNav } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
-import { useVideoAction } from "../../contexts/wishlistContext/like-context";
 import {
+  useVideoAction,
   getLikedVideos,
   removeFromliked,
-} from "../../contexts/wishlistContext/like-utils";
+} from "../../contexts/index";
 
 export function Liked() {
   const navigate = useNavigate();
-
   const { liked, likedSize, dispatchAction } = useVideoAction();
 
   useEffect(() => getLikedVideos(dispatchAction, navigate), []);

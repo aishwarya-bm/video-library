@@ -1,57 +1,57 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useEffect } from "react";
 import { MdDelete } from "react-icons/md";
 import { Header, SideNav } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
+import { useVideoAction } from "../../contexts/index";
+import {
+  getWatchLaterVideos,
+  removeFromWatchLater,
+} from "../../contexts/video-action-context/watchlater-utils";
 
 export function WatchLater() {
-  const [likedVideos, setLikedVideos] = useState([]);
-  async function getVideosList() {
-    try {
-      const { data } = await axios.get("/api/videos");
-      setLikedVideos(() => data.videos);
-    } catch (e) {
-      console.log("error", e);
-    }
-  }
+  const navigate = useNavigate();
+  const { watchLater, watchLaterSize, dispatchAction } = useVideoAction();
 
-  useEffect(() => getVideosList(), []);
+  useEffect(() => getWatchLaterVideos(dispatchAction, navigate), []);
   return (
     <>
       <Header />
       <SideNav />
 
       <div className="videolist-container d-grid">
-        <h4 className="text-center">Watch later</h4>
+        <h4 className="text-center">Watch later - {watchLaterSize}</h4>
         <ul className="custom-video-list list-no-bullet d-grid ">
-          {likedVideos &&
-            likedVideos?.map(
-              ({ _id, title, videoId, author, thumnailHigh }) => {
-                return (
-                  <Link to={`/explore/video/${_id}`} key={_id}>
-                    <div className="card card-hor">
-                      <div className="card-top d-flex">
-                        <img
-                          className="card-image"
-                          src={thumnailHigh.url}
-                          alt="video-cover"
-                        />
-                        <div className="card-header">
-                          <div className="card-title">{title}</div>
-                          <div className="card-author gray-text">{author}</div>
-                        </div>
-                        <button
-                          className="btn btn-link icon-trash p-abs"
-                          aria-hidden="true"
-                        >
-                          <MdDelete size={20} />
-                        </button>
+          {watchLater &&
+            watchLater?.map(({ _id, title, author, thumnailHigh }) => {
+              return (
+                <div className="card card-hor" key={_id}>
+                  <div className="card-top d-flex">
+                    <Link to={`/explore/video/${_id}`}>
+                      <img
+                        className="card-image"
+                        src={thumnailHigh.url}
+                        alt="video-cover"
+                      />
+                    </Link>
+                    <Link to={`/explore/video/${_id}`}>
+                      <div className="card-header">
+                        <div className="card-title">{title}</div>
+                        <div className="card-author gray-text">{author}</div>
                       </div>
-                    </div>
-                  </Link>
-                );
-              }
-            )}
+                    </Link>
+                    <button
+                      className="btn btn-link icon-trash p-abs"
+                      aria-hidden="true"
+                      onClick={() =>
+                        removeFromWatchLater(_id, dispatchAction, navigate)
+                      }
+                    >
+                      <MdDelete size={20} />
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
         </ul>
       </div>
     </>

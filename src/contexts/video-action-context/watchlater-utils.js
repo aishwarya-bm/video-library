@@ -1,19 +1,19 @@
 import axios from "axios";
 import { Toast } from "../../components/index"
 
-const isLiked = (id,data) => {
+const isInWatchLater = (id,data) => {
   return data?.find(item=>item._id === id)
 }
 
-const getLikedVideos = async (dispatchAction,navigate) => {
+const getWatchLaterVideos = async (dispatchAction,navigate) => {
     try {
-      const response = await axios.get("/api/user/likes", {
+      const response = await axios.get("/api/user/watchlater", {
         headers: {
           authorization: localStorage.getItem("userToken"),
         },
       });
       if (response.status === 200) {
-        dispatchAction({type:"GET_LIKED_VIDEOS", payload:response.data.likes})
+        dispatchAction({type:"GET_WATCHLATER_VIDEOS", payload:response.data.watchlater})
       } else {
         navigate("/signup");
       }
@@ -26,10 +26,10 @@ const getLikedVideos = async (dispatchAction,navigate) => {
     }
   };
 
-const addToLiked = async (video,dispatchliked,navigate) => {
+const addToWatchLater = async (video,dispatchAction,navigate) => {
     try {
       const response = await axios.post(
-        "/api/user/likes",
+        "/api/user/watchlater",
         { video  },
         {
           headers: {
@@ -38,9 +38,9 @@ const addToLiked = async (video,dispatchliked,navigate) => {
         }
       );
       if (response.status === 201) {
-        dispatchliked({ type: "ADD_TO_LIKED", payload: response.data.likes });
+        dispatchAction({ type: "ADD_TO_WATCHLATER", payload: response.data.watchlater });
         Toast({
-        message: "Item added to liked videos.",
+        message: "Video added to watch later.",
         type: "success",
       });
       }
@@ -60,8 +60,8 @@ const addToLiked = async (video,dispatchliked,navigate) => {
     }
   };
 
-const removeFromliked = async (id,dispatchAction,navigate) => {
-    const path = `/api/user/likes/${id}`;
+const removeFromWatchLater = async (id,dispatchAction,navigate) => {
+    const path = `/api/user/watchlater/${id}`;
     try {
       const response = await axios.delete(path, {
         headers: {
@@ -70,11 +70,11 @@ const removeFromliked = async (id,dispatchAction,navigate) => {
       });
       if (response.status === 200) {
         dispatchAction({
-          type: "REMOVE_FROM_LIKED",
-          payload: response.data.likes,
+          type: "REMOVE_FROM_WATCHLATER",
+          payload: response.data.watchlater,
         });
         Toast({
-        message: "Item removed from liked videos.",
+        message: "Video removed from watch later.",
         type: "success",
       });
       }
@@ -98,4 +98,4 @@ const removeFromliked = async (id,dispatchAction,navigate) => {
 
 
 
-  export {isLiked, addToLiked,getLikedVideos,removeFromliked,}
+  export {isInWatchLater, addToWatchLater,getWatchLaterVideos,removeFromWatchLater,}

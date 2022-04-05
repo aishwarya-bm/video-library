@@ -5,7 +5,7 @@ import axios from "axios";
 import "./videolist.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { MdThumbUp, MdBookmark, MdClose, MdPlaylistAdd } from "react-icons/md";
-import { useVideoAction } from "../../contexts/wishlistContext/like-context";
+import { useVideoAction } from "../../contexts/index";
 
 export function Videolist() {
   const [videolist, setVideolist] = useState([]);

@@ -7,32 +7,47 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import {
   MdThumbUp,
-  MdThumbDown,
   MdPlaylistAdd,
   MdBookmark,
+  MdBookmarkAdd,
 } from "react-icons/md";
+import { useVideoAction } from "../../contexts/index";
 import {
   addToLiked,
   isLiked,
   removeFromliked,
-} from "../../contexts/wishlistContext/like-utils";
-import { useVideoAction } from "../../contexts/wishlistContext/like-context";
+  addToWatchLater,
+  isInWatchLater,
+  removeFromWatchLater,
+  addToHistory,
+  isInhistory,
+} from "../../contexts/index";
 
 export function VideoPage() {
   const [video, setVideo] = useState({});
   const { id } = useParams();
-  const { liked, dispatchAction } = useVideoAction();
+  const { liked, watchLater, history, dispatchAction } = useVideoAction();
   const navigate = useNavigate();
 
   async function getVideoDetails() {
     try {
-      const { data } = await axios.get(`/api/video/${id}`);
-      setVideo(() => data.video);
+      const { data, status } = await axios.get(`/api/video/${id}`);
+
+      if (status === 200) {
+        setVideo(() => data.video);
+      }
     } catch (e) {
       console.log("error", e);
     }
   }
-  useEffect(() => getVideoDetails(), []);
+  useEffect(() => {
+    getVideoDetails();
+  }, []);
+  useEffect(() => {
+    console.log("add to history", video);
+    if (Object.keys(video).length && !isInhistory(id, history))
+      addToHistory(video, dispatchAction, navigate);
+  }, [video]);
   return (
     <>
       <Header />
@@ -47,7 +62,7 @@ export function VideoPage() {
             <ReactPlayer
               controls
               width={"100%"}
-              url={`https:controls//www.youtube.com/embed/${video.videoId}`}
+              url={`https://youtu.be/${video.videoId}`}
             />
             <h5>{video.title}</h5>
           </div>
@@ -94,12 +109,29 @@ export function VideoPage() {
               <MdThumbUp size={20} />
             </button>
           )}
+          {isInWatchLater(id, watchLater) ? (
+            <>
+              <button
+                className="btn btn-link video-action-btn highlight-action"
+                onClick={() => {
+                  removeFromWatchLater(id, dispatchAction, navigate);
+                }}
+              >
+                <MdBookmark size={20} />
+              </button>
+            </>
+          ) : (
+            <button
+              className="btn btn-link video-action-btn"
+              onClick={() => {
+                addToWatchLater(video, dispatchAction, navigate);
+              }}
+            >
+              <MdBookmarkAdd size={20} />
+            </button>
+          )}
           <button className="btn btn-link video-action-btn">
             <MdPlaylistAdd size={25} />
-          </button>
-
-          <button className="btn btn-link video-action-btn">
-            <MdBookmark size={25} />
           </button>
         </div>
         <div>
