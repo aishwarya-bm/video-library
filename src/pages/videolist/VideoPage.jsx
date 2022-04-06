@@ -44,7 +44,6 @@ export function VideoPage() {
     getVideoDetails();
   }, []);
   useEffect(() => {
-    console.log("add to history", video);
     if (Object.keys(video).length && !isInhistory(id, history))
       addToHistory(video, dispatchAction, navigate);
   }, [video]);
