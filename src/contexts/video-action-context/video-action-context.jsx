@@ -1,6 +1,6 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { videoActionReducer } from "./like-reducer";
+import { videoActionReducer } from "./video-action-reducer";
 import { getLikedVideos } from "./like-utils";
 
 const VideoActionContext = createContext();
@@ -10,7 +10,9 @@ const VideoActionProvider = ({ children }) => {
     liked: [],
     likedSize: 0,
     watchLater: [],
-    watchLaterSize: [],
+    watchLaterSize: 0,
+    history: [],
+    historySize: 0,
   });
   const navigate = useNavigate();
 
@@ -22,6 +24,8 @@ const VideoActionProvider = ({ children }) => {
           likedSize: stateAction.likedSize,
           watchLater: stateAction.watchLater,
           watchLaterSize: stateAction.watchLaterSize,
+          history: stateAction.history,
+          historySize: stateAction.historySize,
           dispatchAction,
         }}
       >

@@ -1,29 +1,33 @@
 import { MdMoreVert } from "react-icons/md";
-import axios from "axios";
-
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { CgPlayListRemove } from "react-icons/cg";
+import { useVideoAction } from "../../contexts/index";
+import "./videocard.css";
+import { useState } from "react";
 import {
   MdThumbUp,
   MdThumbDown,
-  MdBookmark,
+  MdBookmarkAdd,
+  MdBookmarkRemove,
   MdClose,
   MdPlaylistAdd,
 } from "react-icons/md";
-import "./videocard.css";
-import { useState } from "react";
+
 import {
   addToLiked,
   isLiked,
   removeFromliked,
-} from "../../contexts/wishlistContext/like-utils";
-import { useVideoAction } from "../../contexts/wishlistContext/like-context";
+  addToWatchLater,
+  isInWatchLater,
+  removeFromWatchLater,
+} from "../../contexts/index";
 
 export function Videocard({ video }) {
   const { _id, title, thumnailHigh } = video;
   const { dispatchAction } = useVideoAction();
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
-  const { liked } = useVideoAction();
+  const { liked, watchLater } = useVideoAction();
   return (
     <>
       <div className="card children-stacked card-dismiss">
@@ -78,12 +82,33 @@ export function Videocard({ video }) {
                 </button>
               )}
 
+              {isInWatchLater(_id, watchLater) ? (
+                <>
+                  <button
+                    className="d-flex video-menu-item"
+                    onClick={() => {
+                      setShowMenu(false);
+                      removeFromWatchLater(_id, dispatchAction, navigate);
+                    }}
+                  >
+                    <MdBookmarkRemove size={20} /> &nbsp;remove from watch later
+                  </button>
+                </>
+              ) : (
+                <button
+                  className="d-flex video-menu-item"
+                  onClick={() => {
+                    setShowMenu(false);
+                    addToWatchLater(video, dispatchAction, navigate);
+                  }}
+                >
+                  <MdBookmarkAdd size={20} />
+                  &nbsp; add to watch later
+                </button>
+              )}
+
               <button className="d-flex video-menu-item">
-                <MdPlaylistAdd size={20} />
-                &nbsp; playlist
-              </button>
-              <button className="d-flex video-menu-item">
-                <MdBookmark size={20} /> &nbsp; watch later
+                <MdPlaylistAdd size={20} /> &nbsp; add to playlist
               </button>
               <button
                 className="d-flex video-menu-item"

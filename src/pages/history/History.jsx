@@ -4,19 +4,17 @@ import { MdDelete } from "react-icons/md";
 import { Header, SideNav } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
 import "./history.css";
+import {
+  deleteHistory,
+  getHistoryVideos,
+  removeFromHistory,
+} from "../../contexts/index";
+import { useVideoAction } from "../../contexts/index";
 
 export function History() {
-  const [likedVideos, setLikedVideos] = useState([]);
-  async function getVideosList() {
-    try {
-      const { data } = await axios.get("/api/videos");
-      setLikedVideos(() => data.videos);
-    } catch (e) {
-      console.log("error", e);
-    }
-  }
-
-  useEffect(() => getVideosList(), []);
+  const { history, historySize, dispatchAction } = useVideoAction();
+  const navigate = useNavigate();
+  useEffect(() => getHistoryVideos(dispatchAction, navigate), []);
   return (
     <>
       <Header />
@@ -24,38 +22,46 @@ export function History() {
 
       <div className="videolist-container d-grid">
         <div className="d-flex history-header">
-          <h4 className="text-center">History</h4>
-          <button className="btn btn-link">Clear all</button>
+          <h4 className="text-center">History - {historySize}</h4>
+          <button
+            className="btn btn-link"
+            onClick={() => deleteHistory(dispatchAction, navigate)}
+          >
+            Clear all
+          </button>
         </div>
         <ul className="custom-video-list list-no-bullet d-grid ">
-          {likedVideos &&
-            likedVideos?.map(
-              ({ _id, title, videoId, author, thumnailHigh }) => {
-                return (
-                  <Link to={`/explore/video/${_id}`} key={_id}>
-                    <div className="card card-hor">
-                      <div className="card-top d-flex">
-                        <img
-                          className="card-image"
-                          src={thumnailHigh.url}
-                          alt="video-cover"
-                        />
-                        <div className="card-header">
-                          <div className="card-title">{title}</div>
-                          <div className="card-author gray-text">{author}</div>
-                        </div>
-                        <button
-                          className="btn btn-link icon-trash p-abs"
-                          aria-hidden="true"
-                        >
-                          <MdDelete size={20} />
-                        </button>
+          {history &&
+            history?.map(({ _id, title, author, thumnailHigh }) => {
+              return (
+                <div className="card card-hor" key={_id}>
+                  <div className="card-top d-flex">
+                    <Link to={`/explore/video/${_id}`}>
+                      <img
+                        className="card-image"
+                        src={thumnailHigh.url}
+                        alt="video-cover"
+                      />
+                    </Link>
+                    <Link to={`/explore/video/${_id}`}>
+                      <div className="card-header">
+                        <div className="card-title">{title}</div>
+                        <div className="card-author gray-text">{author}</div>
                       </div>
-                    </div>
-                  </Link>
-                );
-              }
-            )}
+                    </Link>
+                    <button
+                      className="btn btn-link icon-trash p-abs"
+                      aria-hidden="true"
+                      onClick={() =>
+                        removeFromHistory(_id, dispatchAction, navigate)
+                      }
+                    >
+                      <MdDelete size={20} />
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
         </ul>
       </div>
     </>
