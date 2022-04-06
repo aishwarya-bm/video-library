@@ -13,7 +13,7 @@ const getLikedVideos = async (dispatchAction,navigate) => {
         },
       });
       if (response.status === 200) {
-        dispatchAction({type:"GET_LIKED_VIDEOS", payload:response.data.likes})
+        dispatchAction({type:"UPDATE_LIKED_VIDEOS", payload:response.data.likes})
       } else {
         navigate("/signup");
       }
@@ -38,7 +38,7 @@ const addToLiked = async (video,dispatchliked,navigate) => {
         }
       );
       if (response.status === 201) {
-        dispatchliked({ type: "ADD_TO_LIKED", payload: response.data.likes });
+        dispatchliked({ type: "UPDATE_LIKED_VIDEOS", payload: response.data.likes });
         Toast({
         message: "Video added to liked playlist.",
         type: "success",
@@ -70,7 +70,7 @@ const removeFromliked = async (id,dispatchAction,navigate) => {
       });
       if (response.status === 200) {
         dispatchAction({
-          type: "REMOVE_FROM_LIKED",
+          type: "UPDATE_LIKED_VIDEOS",
           payload: response.data.likes,
         });
         Toast({

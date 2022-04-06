@@ -13,7 +13,7 @@ const getWatchLaterVideos = async (dispatchAction,navigate) => {
         },
       });
       if (response.status === 200) {
-        dispatchAction({type:"GET_WATCHLATER_VIDEOS", payload:response.data.watchlater})
+        dispatchAction({type:"UPDATE_WATCHLATER_VIDEOS", payload:response.data.watchlater})
       } else {
         navigate("/signup");
       }
@@ -38,7 +38,7 @@ const addToWatchLater = async (video,dispatchAction,navigate) => {
         }
       );
       if (response.status === 201) {
-        dispatchAction({ type: "ADD_TO_WATCHLATER", payload: response.data.watchlater });
+        dispatchAction({ type: "UPDATE_WATCHLATER_VIDEOS", payload: response.data.watchlater });
         Toast({
         message: "Video added to watch later.",
         type: "success",
@@ -70,7 +70,7 @@ const removeFromWatchLater = async (id,dispatchAction,navigate) => {
       });
       if (response.status === 200) {
         dispatchAction({
-          type: "REMOVE_FROM_WATCHLATER",
+          type: "UPDATE_WATCHLATER_VIDEOS",
           payload: response.data.watchlater,
         });
         Toast({

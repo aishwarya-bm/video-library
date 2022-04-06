@@ -13,7 +13,7 @@ const getHistoryVideos = async (dispatchAction,navigate) => {
         },
       });
       if (response.status === 200) {
-        dispatchAction({type:"GET_HISTORY_VIDEOS", payload:response.data.history})
+        dispatchAction({type:"UPDATE_HISTORY_VIDEOS", payload:response.data.history})
       } else {
         navigate("/signup");
       }
@@ -38,7 +38,7 @@ const addToHistory = async (video,dispatchAction,navigate) => {
         }
       );
       if (response.status === 201) {
-        dispatchAction({ type: "ADD_TO_HISTORY", payload: response.data.history });
+        dispatchAction({ type: "UPDATE_HISTORY_VIDEOS", payload: response.data.history });
       }
       else{
           navigate("/signup")
@@ -66,7 +66,7 @@ const removeFromHistory = async (id,dispatchAction,navigate) => {
       });
       if (response.status === 200) {
         dispatchAction({
-          type: "REMOVE_FROM_HISTORY",
+          type: "UPDATE_HISTORY_VIDEOS",
           payload: response.data.history,
         });
         Toast({
@@ -101,7 +101,7 @@ const removeFromHistory = async (id,dispatchAction,navigate) => {
       });
       if (response.status === 200) {
         dispatchAction({
-          type: "CLEAR_HISTORY",
+          type: "UPDATE_HISTORY_VIDEOS",
           payload: response.data.history,
         });
         Toast({
