@@ -12,7 +12,7 @@ import {
 import { useVideoAction } from "../../contexts/index";
 
 export function History() {
-  const { history, historySize, dispatchAction } = useVideoAction();
+  const { history, dispatchAction } = useVideoAction();
   const navigate = useNavigate();
   useEffect(() => getHistoryVideos(dispatchAction, navigate), []);
   return (
@@ -22,7 +22,7 @@ export function History() {
 
       <div className="videolist-container d-grid">
         <div className="d-flex history-header">
-          <h4 className="text-center">History - {historySize}</h4>
+          <h4 className="text-center">History - {history.length}</h4>
           <button
             className="btn btn-link"
             onClick={() => deleteHistory(dispatchAction, navigate)}

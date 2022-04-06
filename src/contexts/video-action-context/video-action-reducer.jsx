@@ -4,21 +4,18 @@ const videoActionReducer = (state, action) => {
       return {
         ...state,
         liked: action.payload,
-        likedSize: action.payload.length,
       };
 
     case "UPDATE_WATCHLATER_VIDEOS":
       return {
         ...state,
         watchLater: action.payload,
-        watchLaterSize: action.payload.length,
       };
 
     case "UPDATE_HISTORY_VIDEOS":
       return {
         ...state,
         history: action.payload,
-        historySize: action.payload.length,
       };
 
     case "UPDATE_PLAYLISTS":

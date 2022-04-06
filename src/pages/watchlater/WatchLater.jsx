@@ -10,7 +10,7 @@ import {
 
 export function WatchLater() {
   const navigate = useNavigate();
-  const { watchLater, watchLaterSize, dispatchAction } = useVideoAction();
+  const { watchLater, dispatchAction } = useVideoAction();
 
   useEffect(() => getWatchLaterVideos(dispatchAction, navigate), []);
   return (
@@ -19,7 +19,7 @@ export function WatchLater() {
       <SideNav />
 
       <div className="videolist-container d-grid">
-        <h4 className="text-center">Watch later - {watchLaterSize}</h4>
+        <h4 className="text-center">Watch later - {watchLater.length}</h4>
         <ul className="custom-video-list list-no-bullet d-grid ">
           {watchLater &&
             watchLater?.map(({ _id, title, author, thumnailHigh }) => {

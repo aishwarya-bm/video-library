@@ -10,7 +10,7 @@ import {
 
 export function Liked() {
   const navigate = useNavigate();
-  const { liked, likedSize, dispatchAction } = useVideoAction();
+  const { liked, dispatchAction } = useVideoAction();
 
   useEffect(() => getLikedVideos(dispatchAction, navigate), []);
   return (
@@ -18,7 +18,7 @@ export function Liked() {
       <Header />
       <SideNav />
       <div className="videolist-container d-grid">
-        <h4 className="text-center">Liked Videos - {likedSize} </h4>
+        <h4 className="text-center">Liked Videos - {liked.length} </h4>
         <ul className="custom-video-list list-no-bullet d-grid ">
           {liked &&
             liked?.map(({ _id, title, author, thumnailHigh }) => {

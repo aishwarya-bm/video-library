@@ -7,11 +7,8 @@ const VideoActionContext = createContext();
 const VideoActionProvider = ({ children }) => {
   const [stateAction, dispatchAction] = useReducer(videoActionReducer, {
     liked: [],
-    likedSize: 0,
     watchLater: [],
-    watchLaterSize: 0,
     history: [],
-    historySize: 0,
     playlist: [],
   });
   const navigate = useNavigate();
@@ -21,13 +18,10 @@ const VideoActionProvider = ({ children }) => {
       <VideoActionContext.Provider
         value={{
           liked: stateAction.liked,
-          likedSize: stateAction.likedSize,
           watchLater: stateAction.watchLater,
-          watchLaterSize: stateAction.watchLaterSize,
           history: stateAction.history,
-          historySize: stateAction.historySize,
-          dispatchAction,
           playlist: stateAction.playlist,
+          dispatchAction,
         }}
       >
         {children}
