@@ -3,11 +3,15 @@ import axios from "axios";
 import { MdDelete } from "react-icons/md";
 import { Header, SideNav } from "../../components";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { deletePlaylist, useVideoAction } from "../../contexts";
+import {
+  removeVideoFromPlaylist,
+  deletePlaylist,
+  useVideoAction,
+} from "../../contexts";
 
 export function PlaylistPage() {
   const [playlist, setPlaylist] = useState({});
-  const { _id, title, videos } = playlist;
+  const { title, videos } = playlist;
 
   const { dispatchAction } = useVideoAction();
   const { playlistId } = useParams();
@@ -25,7 +29,7 @@ export function PlaylistPage() {
     }
   }
 
-  useEffect(() => getPlaylistVideos(), []);
+  useEffect(() => getPlaylistVideos(), [playlist]);
   return (
     <>
       <Header />
@@ -66,6 +70,14 @@ export function PlaylistPage() {
                     <button
                       className="btn btn-link icon-trash p-abs"
                       aria-hidden="true"
+                      onClick={() =>
+                        removeVideoFromPlaylist(
+                          playlistId,
+                          _id,
+                          dispatchAction,
+                          navigate
+                        )
+                      }
                     >
                       <MdDelete size={20} />
                     </button>

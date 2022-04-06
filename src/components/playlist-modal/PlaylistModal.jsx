@@ -21,6 +21,22 @@ export function PlaylistModal({ setShowModal, video, isAddToPlaylist }) {
     setPlaylistName(event.target.value);
   };
 
+  const addNewPlaylistHandler = () => {
+    if (!playlistName) {
+      Toast({
+        message: "Please enter a name",
+        type: "error",
+      });
+      return;
+    }
+    addNewPlaylist(
+      { title: playlistName, description: "new playlist" },
+      dispatchAction,
+      navigate
+    );
+    setPlaylistName("");
+    setShowModal(isAddToPlaylist);
+  };
   useEffect(() => getAllPlaylists(dispatchAction, navigate), []);
 
   return (
@@ -89,22 +105,7 @@ export function PlaylistModal({ setShowModal, video, isAddToPlaylist }) {
             <div className="d-flex">
               <button
                 className="btn btn-primary playlist-btn"
-                onClick={e => {
-                  if (!playlistName) {
-                    Toast({
-                      message: "Please enter a name",
-                      type: "error",
-                    });
-                    return;
-                  }
-                  addNewPlaylist(
-                    { title: playlistName, description: "new playlist" },
-                    dispatchAction,
-                    navigate
-                  );
-                  setPlaylistName("");
-                  setShowModal(isAddToPlaylist);
-                }}
+                onClick={() => addNewPlaylistHandler()}
               >
                 Create
               </button>
@@ -115,7 +116,7 @@ export function PlaylistModal({ setShowModal, video, isAddToPlaylist }) {
                   setPlaylistName("");
                 }}
               >
-                Cancel
+                Close
               </button>
             </div>
           </div>
