@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { MdDelete } from "react-icons/md";
 import { Header, SideNav } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
-import { useVideoAction } from "../../contexts/index";
 import {
+  useVideoAction,
   getWatchLaterVideos,
   removeFromWatchLater,
-} from "../../contexts/video-action-context/watchlater-utils";
+} from "../../contexts/index";
 
 export function WatchLater() {
   const navigate = useNavigate();

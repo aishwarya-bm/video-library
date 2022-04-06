@@ -11,8 +11,8 @@ import {
   MdBookmark,
   MdBookmarkAdd,
 } from "react-icons/md";
-import { useVideoAction } from "../../contexts/index";
 import {
+  useVideoAction,
   addToLiked,
   isLiked,
   removeFromliked,

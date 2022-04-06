@@ -1,7 +1,6 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { videoActionReducer } from "./video-action-reducer";
-import { getLikedVideos } from "./like-utils";
 
 const VideoActionContext = createContext();
 
@@ -14,7 +13,6 @@ const VideoActionProvider = ({ children }) => {
     history: [],
     historySize: 0,
     playlist: [],
-    playlistSize: 0,
   });
   const navigate = useNavigate();
 
@@ -30,7 +28,6 @@ const VideoActionProvider = ({ children }) => {
           historySize: stateAction.historySize,
           dispatchAction,
           playlist: stateAction.playlist,
-          playlistSize: stateAction.playlistSize,
         }}
       >
         {children}

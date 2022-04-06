@@ -1,13 +1,8 @@
 import { useEffect } from "react";
-import { MdDelete } from "react-icons/md";
-import { Header, PlaylistModal, SideNav } from "../../components";
+import { Header, PlaylistModal, SideNav } from "../../components/index";
 import "./playlist.css";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  getAllPlaylists,
-  addNewPlaylist,
-} from "../../contexts/video-action-context/playlist-utils";
-import { useVideoAction } from "../../contexts";
+import { getAllPlaylists, useVideoAction } from "../../contexts/index";
 import { useState } from "react";
 
 export function Playlist() {

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Toast } from "../../components/index"
+import { Toast } from "../../../components/index"
 
 const isLiked = (id,data) => {
   return data?.find(item=>item._id === id)
@@ -40,7 +40,7 @@ const addToLiked = async (video,dispatchliked,navigate) => {
       if (response.status === 201) {
         dispatchliked({ type: "UPDATE_LIKED_VIDEOS", payload: response.data.likes });
         Toast({
-        message: "Video added to liked playlist.",
+        message: "Video added to your liked videos.",
         type: "success",
       });
       }
@@ -74,7 +74,7 @@ const removeFromliked = async (id,dispatchAction,navigate) => {
           payload: response.data.likes,
         });
         Toast({
-        message: "Video removed from liked playlist.",
+        message: "Video removed from your liked videos.",
         type: "success",
       });
       }

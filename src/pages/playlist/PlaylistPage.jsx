@@ -3,8 +3,7 @@ import axios from "axios";
 import { MdDelete } from "react-icons/md";
 import { Header, SideNav } from "../../components";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { deletePlaylist } from "../../contexts/video-action-context/playlist-utils";
-import { useVideoAction } from "../../contexts";
+import { deletePlaylist, useVideoAction } from "../../contexts";
 
 export function PlaylistPage() {
   const [playlist, setPlaylist] = useState({});

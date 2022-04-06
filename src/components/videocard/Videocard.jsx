@@ -1,7 +1,5 @@
 import { MdMoreVert } from "react-icons/md";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { CgPlayListRemove } from "react-icons/cg";
-import { useVideoAction } from "../../contexts/index";
+import { Link, useNavigate } from "react-router-dom";
 import "./videocard.css";
 import { useState } from "react";
 import {
@@ -14,6 +12,7 @@ import {
 } from "react-icons/md";
 
 import {
+  useVideoAction,
   addToLiked,
   isLiked,
   removeFromliked,

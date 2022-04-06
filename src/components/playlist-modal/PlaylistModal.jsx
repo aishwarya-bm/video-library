@@ -8,7 +8,7 @@ import {
   getAllPlaylists,
   isVideoInPlaylist,
   removeVideoFromPlaylist,
-} from "../../contexts/video-action-context/playlist-utils";
+} from "../../contexts/index";
 import { MdPlaylistAddCheck, MdPlaylistAdd } from "react-icons/md";
 import { Toast } from "..";
 
