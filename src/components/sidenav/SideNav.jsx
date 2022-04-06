@@ -14,8 +14,9 @@ export function SideNav() {
     isActive
       ? {
           border: "1px solid var(--info-txt)",
-          boxShadow: "0 0 10px var(--shadow-color)",
-          color: "var(--primary-light)",
+          backgroundColor: "var(--primary-color)",
+          color: "var(--black-color)",
+          borderRadius: "50%",
         }
       : {};
 

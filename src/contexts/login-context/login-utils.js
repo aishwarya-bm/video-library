@@ -70,10 +70,8 @@ const createUser = async (signupForm,setUserErr,setSignupForm,dispatchUser,navig
         message: "Signup failed. Please try again.",
         type: "error",
       });
-        console.log("signup failed with HTTP status",response.status)
       }
     } catch (err) {
-      console.log(err)
       if (err.response && err.response.status === 422) {
         Toast({
         message: "Email already exists, use different one.",

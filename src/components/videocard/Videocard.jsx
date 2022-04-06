@@ -21,11 +21,13 @@ import {
   isInWatchLater,
   removeFromWatchLater,
 } from "../../contexts/index";
+import { PlaylistModal } from "../../components";
 
 export function Videocard({ video }) {
   const { _id, title, thumnailHigh } = video;
   const { dispatchAction } = useVideoAction();
   const [showMenu, setShowMenu] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const { liked, watchLater } = useVideoAction();
   return (
@@ -107,7 +109,13 @@ export function Videocard({ video }) {
                 </button>
               )}
 
-              <button className="d-flex video-menu-item">
+              <button
+                className="d-flex video-menu-item"
+                onClick={() => {
+                  setShowMenu(false);
+                  setShowModal(true);
+                }}
+              >
                 <MdPlaylistAdd size={20} /> &nbsp; add to playlist
               </button>
               <button
@@ -119,6 +127,14 @@ export function Videocard({ video }) {
             </div>
           )}
         </div>
+
+        {showModal && (
+          <PlaylistModal
+            setShowModal={setShowModal}
+            video={video}
+            isAddToPlaylist={true}
+          />
+        )}
       </div>
     </>
   );

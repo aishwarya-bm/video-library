@@ -13,7 +13,6 @@ function App() {
      <Route path="/watchlater" element={<WatchLater />} ></Route>
      <Route path="/playlists" element={<Playlist />} ></Route>
      <Route path="/playlists/:playlistId" element={<PlaylistPage />} ></Route>
-     {/* <Route path="/explore" element={<Videolist />} ></Route> */}
      <Route path="/liked" element={<Liked />} ></Route>
      <Route path="/explore/:categoryName" element={<Videolist />} ></Route>
      <Route path="/explore/video/:id" element={<VideoPage />} ></Route>

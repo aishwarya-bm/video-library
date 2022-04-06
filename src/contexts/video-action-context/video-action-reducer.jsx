@@ -21,6 +21,27 @@ const videoActionReducer = (state, action) => {
         historySize: action.payload.length,
       };
 
+    case "UPDATE_PLAYLISTS":
+      return {
+        ...state,
+        playlist: action.payload,
+      };
+
+    case "ADD_VIDEO_TO_PLAYLIST":
+      return {
+        ...state,
+        playlist: state.playlist.map(item =>
+          item._id === action.payload._id ? action.payload : item
+        ),
+      };
+    case "REMOVE_VIDEO_FROM_PLAYLIST":
+      return {
+        ...state,
+        playlist: state.playlist.map(item =>
+          item._id === action.payload._id ? action.payload : item
+        ),
+      };
+
     default:
       return state;
   }

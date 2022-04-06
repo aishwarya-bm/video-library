@@ -13,6 +13,8 @@ const VideoActionProvider = ({ children }) => {
     watchLaterSize: 0,
     history: [],
     historySize: 0,
+    playlist: [],
+    playlistSize: 0,
   });
   const navigate = useNavigate();
 
@@ -27,6 +29,8 @@ const VideoActionProvider = ({ children }) => {
           history: stateAction.history,
           historySize: stateAction.historySize,
           dispatchAction,
+          playlist: stateAction.playlist,
+          playlistSize: stateAction.playlistSize,
         }}
       >
         {children}

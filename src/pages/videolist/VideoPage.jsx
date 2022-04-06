@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Header, SideNav } from "../../components";
+import { Header, PlaylistModal, SideNav } from "../../components";
 import axios from "axios";
 import "./videolist.css";
 import "./videopage.css";
@@ -25,8 +25,10 @@ import {
 
 export function VideoPage() {
   const [video, setVideo] = useState({});
+  const [showModal, setShowModal] = useState(false);
   const { id } = useParams();
-  const { liked, watchLater, history, dispatchAction } = useVideoAction();
+  const { liked, watchLater, history, playlist, dispatchAction } =
+    useVideoAction();
   const navigate = useNavigate();
 
   async function getVideoDetails() {
@@ -129,7 +131,12 @@ export function VideoPage() {
               <MdBookmarkAdd size={20} />
             </button>
           )}
-          <button className="btn btn-link video-action-btn">
+          <button
+            className="btn btn-link video-action-btn"
+            onClick={() => {
+              setShowModal(true);
+            }}
+          >
             <MdPlaylistAdd size={25} />
           </button>
         </div>
@@ -151,6 +158,13 @@ export function VideoPage() {
             </div>
           </div>
         </div>
+        {showModal && (
+          <PlaylistModal
+            isAddToPlaylist={true}
+            setShowModal={setShowModal}
+            video={video}
+          />
+        )}
       </div>
     </>
   );
