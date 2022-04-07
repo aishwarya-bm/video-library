@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./playlist-modal.css";
-import { useVideoAction } from "../../contexts";
+import { useLogin, useVideoAction } from "../../contexts";
 import { useNavigate } from "react-router-dom";
 import {
   addNewPlaylist,
@@ -16,6 +16,7 @@ export function PlaylistModal({ setShowModal, video, isAddToPlaylist }) {
   const [playlistName, setPlaylistName] = useState("");
   const { playlist, dispatchAction } = useVideoAction();
   const navigate = useNavigate();
+  const { isLoggedIn } = useLogin();
 
   const playListNameChangeHandler = event => {
     setPlaylistName(event.target.value);
@@ -30,6 +31,7 @@ export function PlaylistModal({ setShowModal, video, isAddToPlaylist }) {
       return;
     }
     addNewPlaylist(
+      isLoggedIn,
       { title: playlistName, description: "new playlist" },
       dispatchAction,
       navigate
@@ -37,7 +39,7 @@ export function PlaylistModal({ setShowModal, video, isAddToPlaylist }) {
     setPlaylistName("");
     setShowModal(isAddToPlaylist);
   };
-  useEffect(() => getAllPlaylists(dispatchAction, navigate), []);
+  useEffect(() => getAllPlaylists(isLoggedIn, dispatchAction, navigate), []);
 
   return (
     <>
@@ -61,6 +63,7 @@ export function PlaylistModal({ setShowModal, video, isAddToPlaylist }) {
                               className="btn btn-link video-action-btn highlight-action"
                               onClick={() => {
                                 removeVideoFromPlaylist(
+                                  isLoggedIn,
                                   _id,
                                   video._id,
                                   dispatchAction,
@@ -75,6 +78,7 @@ export function PlaylistModal({ setShowModal, video, isAddToPlaylist }) {
                               className="btn btn-link video-action-btn"
                               onClick={() => {
                                 addVideoToPlaylist(
+                                  isLoggedIn,
                                   video,
                                   _id,
                                   dispatchAction,

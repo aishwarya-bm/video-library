@@ -96,7 +96,7 @@ export function VideoPage() {
               <button
                 className="btn btn-link video-action-btn highlight-action"
                 onClick={() => {
-                  removeFromliked(id, dispatchAction, navigate);
+                  removeFromliked(isLoggedIn, id, dispatchAction, navigate);
                 }}
               >
                 <MdThumbUp size={20} />
@@ -106,7 +106,7 @@ export function VideoPage() {
             <button
               className="btn btn-link video-action-btn"
               onClick={() => {
-                addToLiked(video, dispatchAction, navigate);
+                addToLiked(isLoggedIn, video, dispatchAction, navigate);
               }}
             >
               <MdThumbUp size={20} />
@@ -117,7 +117,12 @@ export function VideoPage() {
               <button
                 className="btn btn-link video-action-btn highlight-action"
                 onClick={() => {
-                  removeFromWatchLater(id, dispatchAction, navigate);
+                  removeFromWatchLater(
+                    isLoggedIn,
+                    id,
+                    dispatchAction,
+                    navigate
+                  );
                 }}
               >
                 <MdBookmark size={20} />
@@ -127,7 +132,7 @@ export function VideoPage() {
             <button
               className="btn btn-link video-action-btn"
               onClick={() => {
-                addToWatchLater(video, dispatchAction, navigate);
+                addToWatchLater(isLoggedIn, video, dispatchAction, navigate);
               }}
             >
               <MdBookmarkAdd size={20} />

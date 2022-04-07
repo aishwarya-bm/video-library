@@ -6,13 +6,18 @@ import {
   useVideoAction,
   getWatchLaterVideos,
   removeFromWatchLater,
+  useLogin,
 } from "../../contexts/index";
 
 export function WatchLater() {
   const navigate = useNavigate();
   const { watchLater, dispatchAction } = useVideoAction();
+  const { isLoggedIn } = useLogin();
 
-  useEffect(() => getWatchLaterVideos(dispatchAction, navigate), []);
+  useEffect(
+    () => getWatchLaterVideos(isLoggedIn, dispatchAction, navigate),
+    []
+  );
   return (
     <>
       <Header />
@@ -59,7 +64,12 @@ export function WatchLater() {
                           className="btn btn-link icon-trash p-abs"
                           aria-hidden="true"
                           onClick={() =>
-                            removeFromWatchLater(_id, dispatchAction, navigate)
+                            removeFromWatchLater(
+                              isLoggedIn,
+                              _id,
+                              dispatchAction,
+                              navigate
+                            )
                           }
                         >
                           <MdDelete size={20} />

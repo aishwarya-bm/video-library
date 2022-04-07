@@ -2,15 +2,20 @@ import { useEffect } from "react";
 import { Header, PlaylistModal, SideNav } from "../../components/index";
 import "./playlist.css";
 import { Link, useNavigate } from "react-router-dom";
-import { getAllPlaylists, useVideoAction } from "../../contexts/index";
+import {
+  getAllPlaylists,
+  useLogin,
+  useVideoAction,
+} from "../../contexts/index";
 import { useState } from "react";
 
 export function Playlist() {
   const { playlist, dispatchAction } = useVideoAction();
   const navigate = useNavigate();
+  const { isLoggedIn } = useLogin();
 
   const [showModal, setShowModal] = useState(false);
-  useEffect(() => getAllPlaylists(dispatchAction, navigate), []);
+  useEffect(() => getAllPlaylists(isLoggedIn, dispatchAction, navigate), []);
   return (
     <>
       <Header />

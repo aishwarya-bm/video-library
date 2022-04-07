@@ -1,12 +1,12 @@
 import axios from "axios";
-import { Toast } from "../../../components/index"
+import { Toast } from "../../../components/index";
 
-const isVideoInPlaylist = (videoId,videos) => {
-  return videos?.find(item => item._id === videoId)
-}
+const isVideoInPlaylist = (videoId, videos) => {
+  return videos?.find(item => item._id === videoId);
+};
 
-
-const getAllPlaylists = async (dispatchAction, navigate) => {
+const getAllPlaylists = async (isLoggedIn, dispatchAction, navigate) => {
+  if (isLoggedIn) {
     try {
       const response = await axios.get("/api/user/playlists", {
         headers: {
@@ -19,19 +19,34 @@ const getAllPlaylists = async (dispatchAction, navigate) => {
           payload: response.data.playlists,
         });
       } else {
-        navigate("/signup");
+        Toast({
+          message: "Some error occured, please try again later",
+          type: "error",
+        });
       }
     } catch (err) {
-      navigate("/signup");
       Toast({
-        message: "Please login to continue.",
-        type: "warning",
+        message: "Some error occured, please try again later",
+        type: "error",
       });
     }
-  };
+  } else {
+    navigate("/signup");
+    Toast({
+      message: "Please login to continue.",
+      type: "warning",
+    });
+  }
+};
 
-  const addNewPlaylist = async (playlist,dispatchAction,navigate) => {
-       try {
+const addNewPlaylist = async (
+  isLoggedIn,
+  playlist,
+  dispatchAction,
+  navigate
+) => {
+  if (isLoggedIn) {
+    try {
       const response = await axios.post(
         "/api/user/playlists",
         { playlist },
@@ -42,33 +57,47 @@ const getAllPlaylists = async (dispatchAction, navigate) => {
         }
       );
       if (response.status === 201) {
-        dispatchAction({ type: "UPDATE_PLAYLISTS", payload: response.data.playlists });
+        dispatchAction({
+          type: "UPDATE_PLAYLISTS",
+          payload: response.data.playlists,
+        });
         Toast({
-        message: "New playlist created.",
-        type: "success",
-      });
-      }
-      else{
-          navigate("/signup")
-          Toast({
-        message: "Please login to continue.",
-        type: "warning",
-      });
+          message: "New playlist created.",
+          type: "success",
+        });
+      } else {
+        Toast({
+          message: "Some error occured, please try again later",
+          type: "error",
+        });
       }
     } catch (err) {
-     navigate("/signup")
-     Toast({
-        message: "Please login to continue.",
-        type: "warning",
+      Toast({
+        message: "Some error occured, please try again later",
+        type: "error",
       });
     }
+  } else {
+    navigate("/signup");
+    Toast({
+      message: "Please login to continue.",
+      type: "warning",
+    });
   }
+};
 
-  const addVideoToPlaylist = async (video,playlistId,dispatchAction,navigate) => {
+const addVideoToPlaylist = async (
+  isLoggedIn,
+  video,
+  playlistId,
+  dispatchAction,
+  navigate
+) => {
+  if (isLoggedIn) {
     try {
       const response = await axios.post(
         `/api/user/playlists/${playlistId}`,
-        { video  },
+        { video },
         {
           headers: {
             authorization: localStorage.getItem("userToken"),
@@ -76,40 +105,51 @@ const getAllPlaylists = async (dispatchAction, navigate) => {
         }
       );
       if (response.status === 200 || response.status == 201) {
-        dispatchAction({ type: "ADD_VIDEO_TO_PLAYLIST", payload: response.data.playlist });
+        dispatchAction({
+          type: "ADD_VIDEO_TO_PLAYLIST",
+          payload: response.data.playlist,
+        });
         Toast({
-        message: "Video added to playlist.",
-        type: "success",
-      });
-      }    
-      else{
-          navigate("/signup")
-          Toast({
+          message: "Video added to playlist.",
+          type: "success",
+        });
+      } else {
+        Toast({
+          message: "Some error occured, please try again later",
+          type: "error",
+        });
+      }
+    } catch (err) {
+      if (err.response.status === 409) {
+        Toast({
+          message: "Video already in playlist.",
+          type: "warning",
+        });
+      } else {
+        Toast({
+          message: "Some error occured, please try again later",
+          type: "error",
+        });
+      }
+    }
+  } else {
+    {
+      navigate("/signup");
+      Toast({
         message: "Please login to continue.",
         type: "warning",
       });
-      }
-    } catch (err) {
-      if(err.response.status === 409)
-      {
-        Toast({
-        message: "Video already in playlist.",
-        type: "warning",
-      });
-      }
-      else
-      {
-        navigate("/signup")
-        Toast({
-          message: "Please login to continue.",
-          type: "warning",
-        });
-      }
-    
     }
-  };
+  }
+};
 
-  const deletePlaylist = async (playlistId,dispatchAction,navigate) => {
+const deletePlaylist = async (
+  isLoggedIn,
+  playlistId,
+  dispatchAction,
+  navigate
+) => {
+  if (isLoggedIn) {
     const path = `/api/user/playlists/${playlistId}`;
     try {
       const response = await axios.delete(path, {
@@ -123,29 +163,39 @@ const getAllPlaylists = async (dispatchAction, navigate) => {
           payload: response.data.playlists,
         });
         Toast({
-        message: "Playlist deleted successfully.",
-        type: "success",
-      });
-      navigate("/playlists")
-      }
-      else{     
-        navigate("/signup");
-          Toast({
-        message: "Please login to continue.",
-        type: "warning",
-      });
-         
+          message: "Playlist deleted successfully.",
+          type: "success",
+        });
+        navigate("/playlists");
+      } else {
+        Toast({
+          message: "Some error occured, please try again later",
+          type: "error",
+        });
       }
     } catch (err) {
-      navigate("/signup");
       Toast({
-        message: "Please login to continue.",
-        type: "warning",
+        message: "Some error occured, please try again later",
+        type: "error",
       });
     }
-  };
+  } else {
+    navigate("/signup");
+    Toast({
+      message: "Please login to continue.",
+      type: "warning",
+    });
+  }
+};
 
- const removeVideoFromPlaylist = async (playlistId,videoId,dispatchAction,navigate) => {
+const removeVideoFromPlaylist = async (
+  isLoggedIn,
+  playlistId,
+  videoId,
+  dispatchAction,
+  navigate
+) => {
+  if (isLoggedIn) {
     const path = `/api/user/playlists/${playlistId}/${videoId}`;
     try {
       const response = await axios.delete(path, {
@@ -153,33 +203,42 @@ const getAllPlaylists = async (dispatchAction, navigate) => {
           authorization: localStorage.getItem("userToken"),
         },
       });
-      console.log(response)
+      console.log(response);
       if (response.status === 200) {
         dispatchAction({
           type: "REMOVE_VIDEO_FROM_PLAYLIST",
           payload: response.data.playlist,
         });
         Toast({
-        message: "Video removed from playlist.",
-        type: "success",
-      });
-      }
-      else{
-       
-          navigate("/signup");
-           Toast({
-        message: "Please login to continue.",
-        type: "warning",
-      });
-         
+          message: "Video removed from playlist.",
+          type: "success",
+        });
+      } else {
+        Toast({
+          message: "Some error occured, please try again later",
+          type: "error",
+        });
       }
     } catch (err) {
-      navigate("/signup");
       Toast({
-        message: "Please login to continue.",
-        type: "warning",
+        message: "Some error occured, please try again later",
+        type: "error",
       });
     }
-  };
+  } else {
+    navigate("/signup");
+    Toast({
+      message: "Please login to continue.",
+      type: "warning",
+    });
+  }
+};
 
-  export {getAllPlaylists, addNewPlaylist, addVideoToPlaylist, deletePlaylist, isVideoInPlaylist,removeVideoFromPlaylist}
+export {
+  getAllPlaylists,
+  addNewPlaylist,
+  addVideoToPlaylist,
+  deletePlaylist,
+  isVideoInPlaylist,
+  removeVideoFromPlaylist,
+};

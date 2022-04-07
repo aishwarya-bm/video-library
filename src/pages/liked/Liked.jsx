@@ -6,13 +6,15 @@ import {
   useVideoAction,
   getLikedVideos,
   removeFromliked,
+  useLogin,
 } from "../../contexts/index";
 
 export function Liked() {
   const navigate = useNavigate();
   const { liked, dispatchAction } = useVideoAction();
+  const { isLoggedIn } = useLogin();
 
-  useEffect(() => getLikedVideos(dispatchAction, navigate), []);
+  useEffect(() => getLikedVideos(isLoggedIn, dispatchAction, navigate), []);
   return (
     <>
       <Header />
@@ -56,7 +58,12 @@ export function Liked() {
                           className="btn btn-link icon-trash p-abs"
                           aria-hidden="true"
                           onClick={() =>
-                            removeFromliked(_id, dispatchAction, navigate)
+                            removeFromliked(
+                              isLoggedIn,
+                              _id,
+                              dispatchAction,
+                              navigate
+                            )
                           }
                         >
                           <MdDelete size={20} />

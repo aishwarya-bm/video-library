@@ -19,6 +19,7 @@ import {
   addToWatchLater,
   isInWatchLater,
   removeFromWatchLater,
+  useLogin,
 } from "../../contexts/index";
 import { PlaylistModal } from "../../components";
 
@@ -27,6 +28,7 @@ export function Videocard({ video }) {
   const { dispatchAction } = useVideoAction();
   const [showMenu, setShowMenu] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const { isLoggedIn } = useLogin();
   const navigate = useNavigate();
   const { liked, watchLater } = useVideoAction();
   return (
@@ -64,7 +66,12 @@ export function Videocard({ video }) {
                     className="d-flex video-menu-item"
                     onClick={() => {
                       setShowMenu(false);
-                      removeFromliked(_id, dispatchAction, navigate);
+                      removeFromliked(
+                        isLoggedIn,
+                        _id,
+                        dispatchAction,
+                        navigate
+                      );
                     }}
                   >
                     <MdThumbDown size={20} /> &nbsp;dislike
@@ -75,7 +82,7 @@ export function Videocard({ video }) {
                   className="d-flex video-menu-item"
                   onClick={() => {
                     setShowMenu(false);
-                    addToLiked(video, dispatchAction, navigate);
+                    addToLiked(isLoggedIn, video, dispatchAction, navigate);
                   }}
                 >
                   <MdThumbUp size={20} />
@@ -89,7 +96,12 @@ export function Videocard({ video }) {
                     className="d-flex video-menu-item"
                     onClick={() => {
                       setShowMenu(false);
-                      removeFromWatchLater(_id, dispatchAction, navigate);
+                      removeFromWatchLater(
+                        isLoggedIn,
+                        _id,
+                        dispatchAction,
+                        navigate
+                      );
                     }}
                   >
                     <MdBookmarkRemove size={20} /> &nbsp;remove from watch later
@@ -100,7 +112,12 @@ export function Videocard({ video }) {
                   className="d-flex video-menu-item"
                   onClick={() => {
                     setShowMenu(false);
-                    addToWatchLater(video, dispatchAction, navigate);
+                    addToWatchLater(
+                      isLoggedIn,
+                      video,
+                      dispatchAction,
+                      navigate
+                    );
                   }}
                 >
                   <MdBookmarkAdd size={20} />

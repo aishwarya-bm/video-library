@@ -7,12 +7,14 @@ import {
   removeVideoFromPlaylist,
   deletePlaylist,
   useVideoAction,
+  useLogin,
 } from "../../contexts";
 
 export function PlaylistPage() {
   const [playlist, setPlaylist] = useState({});
   const { title, videos } = playlist;
 
+  const { isLoggedIn } = useLogin();
   const { dispatchAction } = useVideoAction();
   const { playlistId } = useParams();
   const navigate = useNavigate();
@@ -40,7 +42,12 @@ export function PlaylistPage() {
           <button
             className="btn btn-error"
             onClick={() => {
-              deletePlaylist(playlist._id, dispatchAction, navigate);
+              deletePlaylist(
+                isLoggedIn,
+                playlist._id,
+                dispatchAction,
+                navigate
+              );
             }}
           >
             Delete
@@ -86,6 +93,7 @@ export function PlaylistPage() {
                           aria-hidden="true"
                           onClick={() =>
                             removeVideoFromPlaylist(
+                              isLoggedIn,
                               playlistId,
                               _id,
                               dispatchAction,
