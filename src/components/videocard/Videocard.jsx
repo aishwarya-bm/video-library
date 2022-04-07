@@ -24,7 +24,7 @@ import {
 import { PlaylistModal } from "../../components";
 
 export function Videocard({ video }) {
-  const { _id, title, thumnailHigh } = video;
+  const { _id, title, thumbnails, author } = video;
   const { dispatchAction } = useVideoAction();
   const [showMenu, setShowMenu] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -36,17 +36,15 @@ export function Videocard({ video }) {
       <div className="card children-stacked card-dismiss">
         <Link to={`/explore/video/${_id}`}>
           <div className="card-media">
-            <img src={thumnailHigh.url} alt="card-img" />
+            <img src={thumbnails.high.url} alt="card-img" />
           </div>
         </Link>
 
         <div className="card-head d-flex p-rel">
           <Link to={`/explore/video/${_id}`}>
             <div className="card-header children-stacked">
-              <div className="card-title">
-                {"title title title title title title title title"}
-              </div>
-              <div className="card-author gray-text">by Aishwarya B</div>
+              <div className="card-title">{title}</div>
+              <div className="card-author gray-text">{author}</div>
             </div>
           </Link>
           <button

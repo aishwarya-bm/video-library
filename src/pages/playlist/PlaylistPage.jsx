@@ -69,14 +69,14 @@ export function PlaylistPage() {
           <>
             <ul className="custom-video-list list-no-bullet d-grid ">
               {videos &&
-                videos?.map(({ _id, title, videoId, author, thumnailHigh }) => {
+                videos?.map(({ _id, title, videoId, author, thumbnails }) => {
                   return (
                     <div key={_id} className="card card-hor">
                       <div className="card-top d-flex">
                         <Link to={`/explore/video/${_id}`}>
                           <img
                             className="card-image"
-                            src={thumnailHigh.url}
+                            src={thumbnails.high.url}
                             alt="video-cover"
                           />
                         </Link>

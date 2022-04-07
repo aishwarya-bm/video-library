@@ -24,46 +24,46 @@ export function CategoryFilter() {
           All
         </NavLink>
         <NavLink
-          to="/explore/music"
+          to="/explore/motifs"
           style={getActiveStyle}
           className="category-name"
         >
-          Music
+          Motifs & motives
         </NavLink>
         <NavLink
-          to="/explore/comedy"
+          to="/explore/characters"
           style={getActiveStyle}
           className="category-name"
         >
-          Comedy
+          Characters archetypes
         </NavLink>
         <NavLink
-          to="/explore/ted"
+          to="/explore/screenwriting"
           style={getActiveStyle}
           className="category-name"
         >
-          ted
+          Screen writing
         </NavLink>
         <NavLink
-          to="/explore/sports"
+          to="/explore/directors"
           style={getActiveStyle}
           className="category-name"
         >
-          Sports
+          Directors
         </NavLink>
         <NavLink
-          to="/explore/learning"
+          to="/explore/scripts"
           style={getActiveStyle}
           className="category-name"
         >
-          Learning
+          Scripts
         </NavLink>
         <NavLink
-          to="/explore/movies"
+          to="/explore/storytelling"
           style={getActiveStyle}
           className="category-name"
         >
-          Movies
+          Story telling
         </NavLink>
       </ul>
     </>

@@ -35,14 +35,14 @@ export function Liked() {
             <h4 className="text-center">Liked Videos - {liked.length} </h4>
             <ul className="custom-video-list list-no-bullet d-grid ">
               {liked &&
-                liked?.map(({ _id, title, author, thumnailHigh }, idx) => {
+                liked?.map(({ _id, title, author, thumbnails }, idx) => {
                   return (
                     <div className="card card-hor" key={_id}>
                       <div className="card-top d-flex">
                         <Link to={`/explore/video/${_id}`}>
                           <img
                             className="card-image"
-                            src={thumnailHigh.url}
+                            src={thumbnails.high.url}
                             alt={`video-cover-${idx}`}
                           />
                         </Link>

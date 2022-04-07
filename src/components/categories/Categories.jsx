@@ -28,28 +28,30 @@ export function Categories() {
         <div className="d-grid">
           <ul className="category-container d-grid list-no-bullet">
             {categories &&
-              categories?.map(({ _id, categoryName, categoryImg }) => {
-                return (
-                  <li key={_id}>
-                    <div className="card children-stacked" onClick={() => {}}>
-                      <Link to={`/explore/${categoryName}`}>
-                        <img
-                          className="card-media"
-                          src={categoryImg}
-                          alt="card-img"
-                        />
-                      </Link>
+              categories?.map(
+                ({ _id, categoryName, categoryImg, categoryTitle }) => {
+                  return (
+                    <li key={_id}>
+                      <div className="card children-stacked" onClick={() => {}}>
+                        <Link to={`/explore/${categoryName}`}>
+                          <img
+                            className="card-media"
+                            src={categoryImg}
+                            alt="card-img"
+                          />
+                        </Link>
 
-                      <Link
-                        to={`/explore/${categoryName}`}
-                        className="btn btn-link card-btn text-center"
-                      >
-                        {categoryName}
-                      </Link>
-                    </div>
-                  </li>
-                );
-              })}
+                        <Link
+                          to={`/explore/${categoryName}`}
+                          className="btn btn-link card-btn text-center"
+                        >
+                          {categoryTitle}
+                        </Link>
+                      </div>
+                    </li>
+                  );
+                }
+              )}
           </ul>
         </div>
       </div>
