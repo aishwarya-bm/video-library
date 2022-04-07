@@ -21,6 +21,7 @@ import {
   removeFromWatchLater,
   addToHistory,
   isInhistory,
+  useLogin,
 } from "../../contexts/index";
 
 export function VideoPage() {
@@ -29,6 +30,7 @@ export function VideoPage() {
   const { id } = useParams();
   const { liked, watchLater, history, playlist, dispatchAction } =
     useVideoAction();
+  const { isLoggedIn } = useLogin();
   const navigate = useNavigate();
 
   async function getVideoDetails() {
@@ -47,7 +49,7 @@ export function VideoPage() {
   }, []);
   useEffect(() => {
     if (Object.keys(video).length && !isInhistory(id, history))
-      addToHistory(video, dispatchAction, navigate);
+      addToHistory(isLoggedIn, video, dispatchAction, navigate);
   }, [video]);
   return (
     <>

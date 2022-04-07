@@ -8,13 +8,15 @@ import {
   deleteHistory,
   getHistoryVideos,
   removeFromHistory,
+  useLogin,
 } from "../../contexts/index";
 import { useVideoAction } from "../../contexts/index";
 
 export function History() {
+  const { isLoggedIn } = useLogin();
   const { history, dispatchAction } = useVideoAction();
   const navigate = useNavigate();
-  useEffect(() => getHistoryVideos(dispatchAction, navigate), []);
+  useEffect(() => getHistoryVideos(isLoggedIn, dispatchAction, navigate), []);
   return (
     <>
       <Header />
@@ -38,7 +40,9 @@ export function History() {
               <h4 className="text-center">History - {history.length}</h4>
               <button
                 className="btn btn-link"
-                onClick={() => deleteHistory(dispatchAction, navigate)}
+                onClick={() =>
+                  deleteHistory(isLoggedIn, dispatchAction, navigate)
+                }
               >
                 Clear all
               </button>
@@ -68,7 +72,12 @@ export function History() {
                           className="btn btn-link icon-trash p-abs"
                           aria-hidden="true"
                           onClick={() =>
-                            removeFromHistory(_id, dispatchAction, navigate)
+                            removeFromHistory(
+                              isLoggedIn,
+                              _id,
+                              dispatchAction,
+                              navigate
+                            )
                           }
                         >
                           <MdDelete size={20} />

@@ -5,8 +5,9 @@ const isInhistory = (id,data) => {
   return data?.find(item=>item._id === id) ? true : false
 }
 
-const getHistoryVideos = async (dispatchAction,navigate) => {
-    try {
+const getHistoryVideos = async (isLoggedIn,dispatchAction,navigate) => {
+  if(isLoggedIn)
+   { try {
       const response = await axios.get("/api/user/history", {
         headers: {
           authorization: localStorage.getItem("userToken"),
@@ -15,9 +16,18 @@ const getHistoryVideos = async (dispatchAction,navigate) => {
       if (response.status === 200) {
         dispatchAction({type:"UPDATE_HISTORY_VIDEOS", payload:response.data.history})
       } else {
-        navigate("/signup");
+        Toast({
+        message: "Some error occured, please try again later",
+        type: "error",
+      });
       }
     } catch (err) {
+      Toast({
+        message: "Some error occured, please try again later",
+        type: "error",
+      });
+    }}
+    else{
       navigate("/signup")
       Toast({
         message: "Please login to continue.",
@@ -26,8 +36,8 @@ const getHistoryVideos = async (dispatchAction,navigate) => {
     }
   };
 
-const addToHistory = async (video,dispatchAction,navigate) => {
-    try {
+const addToHistory = async (isLoggedIn,video,dispatchAction,navigate) => {
+   if(isLoggedIn){ try {
       const response = await axios.post(
         "/api/user/history",
         { video  },
@@ -41,14 +51,19 @@ const addToHistory = async (video,dispatchAction,navigate) => {
         dispatchAction({ type: "UPDATE_HISTORY_VIDEOS", payload: response.data.history });
       }
       else{
-          navigate("/signup")
-          Toast({
-        message: "Please login to continue.",
-        type: "warning",
+         Toast({
+        message: "Some error occured, please try again later",
+        type: "error",
       });
       }
     } catch (err) {
-     navigate("/signup")
+     Toast({
+        message: "Some error occured, please try again later",
+        type: "error",
+      });
+    }}
+    else{
+      navigate("/signup")
      Toast({
         message: "Please login to continue.",
         type: "warning",
@@ -56,8 +71,9 @@ const addToHistory = async (video,dispatchAction,navigate) => {
     }
   };
 
-const removeFromHistory = async (id,dispatchAction,navigate) => {
-    const path = `/api/user/history/${id}`;
+const removeFromHistory = async (isLoggedIn,id,dispatchAction,navigate) => {
+   if(isLoggedIn) {
+     const path = `/api/user/history/${id}`;
     try {
       const response = await axios.delete(path, {
         headers: {
@@ -75,24 +91,29 @@ const removeFromHistory = async (id,dispatchAction,navigate) => {
       });
       }
       else{     
-          navigate("/signup");
            Toast({
-        message: "Please login to continue.",
-        type: "warning",
+        message: "Some error occured, please try again later",
+        type: "error",
       });
-         
       }
     } catch (err) {
-      navigate("/signup");
       Toast({
+        message: "Some error occured, please try again later",
+        type: "error",
+      });
+    }}
+    else{
+    navigate("/signup")
+     Toast({
         message: "Please login to continue.",
         type: "warning",
       });
     }
   };
 
-  const deleteHistory = async (dispatchAction,navigate) => {
-    const path = `/api/user/history/all`;
+  const deleteHistory = async (isLoggedIn,dispatchAction,navigate) => {
+    if(isLoggedIn)
+    {const path = `/api/user/history/all`;
     try {
       const response = await axios.delete(path, {
         headers: {
@@ -110,15 +131,20 @@ const removeFromHistory = async (id,dispatchAction,navigate) => {
       });
       }
       else{     
-          navigate("/signup");
-           Toast({
-        message: "Please login to continue.",
-        type: "warning",
+          Toast({
+        message: "Some error occured, please try again later",
+        type: "error",
       });
          
       }
     } catch (err) {
-      navigate("/signup");
+      Toast({
+        message: "Some error occured, please try again later",
+        type: "error",
+      });
+    }}
+    else{
+       navigate("/signup")
       Toast({
         message: "Please login to continue.",
         type: "warning",
