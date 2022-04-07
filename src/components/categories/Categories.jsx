@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./categories.css";
+import { Toast } from "../toast/Toast";
 
 export function Categories() {
   const [categories, setCategories] = useState([]);
@@ -11,7 +12,10 @@ export function Categories() {
       const { data } = await axios.get("/api/categories");
       setCategories(() => data.categories);
     } catch (e) {
-      console.log("error occured", e);
+      Toast({
+        message: "Some error occured, please try again later",
+        type: "error",
+      });
     }
   };
   useEffect(() => getCategories(), []);

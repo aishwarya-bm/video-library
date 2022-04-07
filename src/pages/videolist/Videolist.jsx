@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
-import { CategoryFilter, Header, SideNav, Videocard } from "../../components";
-import { MdMoreVert } from "react-icons/md";
+import {
+  CategoryFilter,
+  Header,
+  SideNav,
+  Toast,
+  Videocard,
+} from "../../components";
 import axios from "axios";
 import "./videolist.css";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { MdThumbUp, MdBookmark, MdClose, MdPlaylistAdd } from "react-icons/md";
+import { useNavigate, useParams } from "react-router-dom";
 import { useVideoAction } from "../../contexts/index";
 
 export function Videolist() {
@@ -18,7 +22,10 @@ export function Videolist() {
       const { data } = await axios.get("/api/videos");
       setVideolist(() => data.videos);
     } catch (e) {
-      console.log("error", e);
+      Toast({
+        message: "Some error occured, please try again later",
+        type: "error",
+      });
     }
   }
 

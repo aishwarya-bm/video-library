@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Header, PlaylistModal, SideNav } from "../../components";
+import { Header, PlaylistModal, SideNav, Toast } from "../../components";
 import axios from "axios";
 import "./videolist.css";
 import "./videopage.css";
@@ -41,7 +41,10 @@ export function VideoPage() {
         setVideo(() => data.video);
       }
     } catch (e) {
-      console.log("error", e);
+      Toast({
+        message: "Some error occured, please try again later",
+        type: "error",
+      });
     }
   }
   useEffect(() => {

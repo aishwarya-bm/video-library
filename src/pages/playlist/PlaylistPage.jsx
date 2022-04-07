@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { MdDelete } from "react-icons/md";
-import { Header, SideNav } from "../../components";
+import { Header, SideNav, Toast } from "../../components";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   removeVideoFromPlaylist,
@@ -27,7 +27,10 @@ export function PlaylistPage() {
       });
       setPlaylist(() => data.playlist);
     } catch (e) {
-      console.log("error", e);
+      Toast({
+        message: "Some error occured, please try again later",
+        type: "error",
+      });
     }
   }
   useEffect(() => getPlaylistVideos(), [playlist]);
