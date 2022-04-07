@@ -99,7 +99,10 @@ export function Signin({ setIsSignUp }) {
         >
           <span className="gray-text"> Login with test credentials</span>
         </button>
-        <button className="btn btn-link user-account-link">
+        <button
+          className="btn btn-link user-account-link"
+          onClick={() => setIsSignUp(true)}
+        >
           <i>Create new account &nbsp;</i>
           <i className="fa fa-solid fa-angle-right"></i>
         </button>

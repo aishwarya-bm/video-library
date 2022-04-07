@@ -17,7 +17,7 @@ export function Navpills() {
           {isLoggedIn && (
             <>
               <li>
-                <Link to="/signup">
+                <Link to="/">
                   <i className="fa fas fa-user btn btn-link nav-btn" />
                 </Link>
               </li>

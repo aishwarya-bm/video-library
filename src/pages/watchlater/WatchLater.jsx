@@ -41,15 +41,15 @@ export function WatchLater() {
             <h4 className="text-center">Watch later - {watchLater.length}</h4>
             <ul className="custom-video-list list-no-bullet d-grid ">
               {watchLater &&
-                watchLater?.map(({ _id, title, author, thumnailHigh }) => {
+                watchLater?.map(({ _id, title, author, thumbnails }, idx) => {
                   return (
                     <div className="card card-hor" key={_id}>
                       <div className="card-top d-flex">
                         <Link to={`/explore/video/${_id}`}>
                           <img
                             className="card-image"
-                            src={thumnailHigh.url}
-                            alt="video-cover"
+                            src={thumbnails.high.url}
+                            alt={`video-cover-${idx}`}
                           />
                         </Link>
                         <Link to={`/explore/video/${_id}`}>
