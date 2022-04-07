@@ -20,7 +20,7 @@ export function Liked() {
       <Header />
       <SideNav />
       <div className="videolist-container d-grid">
-        {!liked[0] ? (
+        {liked.length === 0 ? (
           <div className="not-found">
             <h5 className="text-center">Your have 0 liked videos!</h5>
             <div className="d-flex children-center img-not-found">
@@ -35,7 +35,7 @@ export function Liked() {
             <h4 className="text-center">Liked Videos - {liked.length} </h4>
             <ul className="custom-video-list list-no-bullet d-grid ">
               {liked &&
-                liked?.map(({ _id, title, author, thumnailHigh }) => {
+                liked?.map(({ _id, title, author, thumnailHigh }, idx) => {
                   return (
                     <div className="card card-hor" key={_id}>
                       <div className="card-top d-flex">
@@ -43,7 +43,7 @@ export function Liked() {
                           <img
                             className="card-image"
                             src={thumnailHigh.url}
-                            alt="video-cover"
+                            alt={`video-cover-${idx}`}
                           />
                         </Link>
                         <Link to={`/explore/video/${_id}`}>

@@ -10,7 +10,7 @@ import {
   removeVideoFromPlaylist,
 } from "../../contexts/index";
 import { MdPlaylistAddCheck, MdPlaylistAdd } from "react-icons/md";
-import { Toast } from "..";
+import { Toast } from "../index";
 
 export function PlaylistModal({ setShowModal, video, isAddToPlaylist }) {
   const [playlistName, setPlaylistName] = useState("");
