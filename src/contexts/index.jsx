@@ -9,14 +9,14 @@ export {
   addToLiked,
   getLikedVideos,
   removeFromliked,
-} from "./video-action-context/like-utils";
+} from "./video-action-context/video-action-utils/like-utils";
 
 export {
   isInWatchLater,
   addToWatchLater,
   getWatchLaterVideos,
   removeFromWatchLater,
-} from "./video-action-context/watchlater-utils";
+} from "./video-action-context/video-action-utils/watchlater-utils";
 
 export {
   isInhistory,
@@ -24,4 +24,13 @@ export {
   getHistoryVideos,
   removeFromHistory,
   deleteHistory,
-} from "./video-action-context/history-utils";
+} from "./video-action-context/video-action-utils/history-utils";
+
+export {
+  getAllPlaylists,
+  addNewPlaylist,
+  addVideoToPlaylist,
+  deletePlaylist,
+  isVideoInPlaylist,
+  removeVideoFromPlaylist,
+} from "./video-action-context/video-action-utils/playlist-utils";

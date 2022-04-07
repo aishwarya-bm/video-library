@@ -31,6 +31,15 @@ export function Signin({ setIsSignUp }) {
     loginUser(loginForm, dispatchUser, navigate);
   };
 
+  const handleTestLogin = e => {
+    e.preventDefault();
+    loginUser(
+      { email: "test@gmail.com", password: "test" },
+      dispatchUser,
+      navigate
+    );
+  };
+
   return (
     <>
       <section className="signup-section d-grid grid-gap" id="login-section">
@@ -86,10 +95,11 @@ export function Signin({ setIsSignUp }) {
         </form>
         <button
           className="btn btn-link user-account-link"
-          onClick={() => {
-            setIsSignUp(true);
-          }}
+          onClick={e => handleTestLogin(e)}
         >
+          <span className="gray-text"> Login with test credentials</span>
+        </button>
+        <button className="btn btn-link user-account-link">
           <i>Create new account &nbsp;</i>
           <i className="fa fa-solid fa-angle-right"></i>
         </button>

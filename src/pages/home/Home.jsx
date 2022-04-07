@@ -1,5 +1,4 @@
 import "../../App.css";
-import homepage5 from "../../assets/homepage5.jpg";
 import "./home.css";
 import { Categories, Header, SideNav } from "../../components";
 

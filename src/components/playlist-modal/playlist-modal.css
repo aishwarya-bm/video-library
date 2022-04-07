@@ -1,0 +1,47 @@
+.modal-container{
+    background-color: var(--dark-theme-modal-bg);
+}
+
+.modal{
+    background-color: var(--black-color);
+    border: 1px solid var(--primary-light);
+    border-radius: 5px;
+    z-index: 25;
+    min-width: 16rem;
+}
+
+.modal-header{
+    justify-content: space-between;
+    color: var(--primary-lighter);
+}
+
+.modal-body{
+    margin: 1rem 0;
+    overflow-y: scroll;
+    height: 30vh;
+}
+
+.modal-actions{
+    flex-wrap: wrap;
+}
+
+.playlist-items{
+    align-items: center;
+    background-color: var(--helper-color);
+    border-radius: 10px;
+}
+
+.playlist-btn{
+    padding: 0.4rem 0.75rem;
+}
+.modal-body::-webkit-scrollbar {
+    width: 0.3rem;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background-color: var(--grey-bg);
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background-color: var(--primary-dark);
+}

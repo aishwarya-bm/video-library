@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Header, SideNav } from "../../components";
+import { Header, PlaylistModal, SideNav } from "../../components";
 import axios from "axios";
 import "./videolist.css";
 import "./videopage.css";
@@ -11,8 +11,8 @@ import {
   MdBookmark,
   MdBookmarkAdd,
 } from "react-icons/md";
-import { useVideoAction } from "../../contexts/index";
 import {
+  useVideoAction,
   addToLiked,
   isLiked,
   removeFromliked,
@@ -21,12 +21,16 @@ import {
   removeFromWatchLater,
   addToHistory,
   isInhistory,
+  useLogin,
 } from "../../contexts/index";
 
 export function VideoPage() {
   const [video, setVideo] = useState({});
+  const [showModal, setShowModal] = useState(false);
   const { id } = useParams();
-  const { liked, watchLater, history, dispatchAction } = useVideoAction();
+  const { liked, watchLater, history, playlist, dispatchAction } =
+    useVideoAction();
+  const { isLoggedIn } = useLogin();
   const navigate = useNavigate();
 
   async function getVideoDetails() {
@@ -45,7 +49,7 @@ export function VideoPage() {
   }, []);
   useEffect(() => {
     if (Object.keys(video).length && !isInhistory(id, history))
-      addToHistory(video, dispatchAction, navigate);
+      addToHistory(isLoggedIn, video, dispatchAction, navigate);
   }, [video]);
   return (
     <>
@@ -92,7 +96,7 @@ export function VideoPage() {
               <button
                 className="btn btn-link video-action-btn highlight-action"
                 onClick={() => {
-                  removeFromliked(id, dispatchAction, navigate);
+                  removeFromliked(isLoggedIn, id, dispatchAction, navigate);
                 }}
               >
                 <MdThumbUp size={20} />
@@ -102,7 +106,7 @@ export function VideoPage() {
             <button
               className="btn btn-link video-action-btn"
               onClick={() => {
-                addToLiked(video, dispatchAction, navigate);
+                addToLiked(isLoggedIn, video, dispatchAction, navigate);
               }}
             >
               <MdThumbUp size={20} />
@@ -113,7 +117,12 @@ export function VideoPage() {
               <button
                 className="btn btn-link video-action-btn highlight-action"
                 onClick={() => {
-                  removeFromWatchLater(id, dispatchAction, navigate);
+                  removeFromWatchLater(
+                    isLoggedIn,
+                    id,
+                    dispatchAction,
+                    navigate
+                  );
                 }}
               >
                 <MdBookmark size={20} />
@@ -123,13 +132,18 @@ export function VideoPage() {
             <button
               className="btn btn-link video-action-btn"
               onClick={() => {
-                addToWatchLater(video, dispatchAction, navigate);
+                addToWatchLater(isLoggedIn, video, dispatchAction, navigate);
               }}
             >
               <MdBookmarkAdd size={20} />
             </button>
           )}
-          <button className="btn btn-link video-action-btn">
+          <button
+            className="btn btn-link video-action-btn"
+            onClick={() => {
+              setShowModal(true);
+            }}
+          >
             <MdPlaylistAdd size={25} />
           </button>
         </div>
@@ -151,6 +165,13 @@ export function VideoPage() {
             </div>
           </div>
         </div>
+        {showModal && (
+          <PlaylistModal
+            isAddToPlaylist={true}
+            setShowModal={setShowModal}
+            video={video}
+          />
+        )}
       </div>
     </>
   );

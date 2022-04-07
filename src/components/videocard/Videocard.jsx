@@ -1,7 +1,5 @@
 import { MdMoreVert } from "react-icons/md";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { CgPlayListRemove } from "react-icons/cg";
-import { useVideoAction } from "../../contexts/index";
+import { Link, useNavigate } from "react-router-dom";
 import "./videocard.css";
 import { useState } from "react";
 import {
@@ -14,18 +12,23 @@ import {
 } from "react-icons/md";
 
 import {
+  useVideoAction,
   addToLiked,
   isLiked,
   removeFromliked,
   addToWatchLater,
   isInWatchLater,
   removeFromWatchLater,
+  useLogin,
 } from "../../contexts/index";
+import { PlaylistModal } from "../../components";
 
 export function Videocard({ video }) {
   const { _id, title, thumnailHigh } = video;
   const { dispatchAction } = useVideoAction();
   const [showMenu, setShowMenu] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const { isLoggedIn } = useLogin();
   const navigate = useNavigate();
   const { liked, watchLater } = useVideoAction();
   return (
@@ -63,7 +66,12 @@ export function Videocard({ video }) {
                     className="d-flex video-menu-item"
                     onClick={() => {
                       setShowMenu(false);
-                      removeFromliked(_id, dispatchAction, navigate);
+                      removeFromliked(
+                        isLoggedIn,
+                        _id,
+                        dispatchAction,
+                        navigate
+                      );
                     }}
                   >
                     <MdThumbDown size={20} /> &nbsp;dislike
@@ -74,7 +82,7 @@ export function Videocard({ video }) {
                   className="d-flex video-menu-item"
                   onClick={() => {
                     setShowMenu(false);
-                    addToLiked(video, dispatchAction, navigate);
+                    addToLiked(isLoggedIn, video, dispatchAction, navigate);
                   }}
                 >
                   <MdThumbUp size={20} />
@@ -88,7 +96,12 @@ export function Videocard({ video }) {
                     className="d-flex video-menu-item"
                     onClick={() => {
                       setShowMenu(false);
-                      removeFromWatchLater(_id, dispatchAction, navigate);
+                      removeFromWatchLater(
+                        isLoggedIn,
+                        _id,
+                        dispatchAction,
+                        navigate
+                      );
                     }}
                   >
                     <MdBookmarkRemove size={20} /> &nbsp;remove from watch later
@@ -99,7 +112,12 @@ export function Videocard({ video }) {
                   className="d-flex video-menu-item"
                   onClick={() => {
                     setShowMenu(false);
-                    addToWatchLater(video, dispatchAction, navigate);
+                    addToWatchLater(
+                      isLoggedIn,
+                      video,
+                      dispatchAction,
+                      navigate
+                    );
                   }}
                 >
                   <MdBookmarkAdd size={20} />
@@ -107,7 +125,13 @@ export function Videocard({ video }) {
                 </button>
               )}
 
-              <button className="d-flex video-menu-item">
+              <button
+                className="d-flex video-menu-item"
+                onClick={() => {
+                  setShowMenu(false);
+                  setShowModal(true);
+                }}
+              >
                 <MdPlaylistAdd size={20} /> &nbsp; add to playlist
               </button>
               <button
@@ -119,6 +143,14 @@ export function Videocard({ video }) {
             </div>
           )}
         </div>
+
+        {showModal && (
+          <PlaylistModal
+            setShowModal={setShowModal}
+            video={video}
+            isAddToPlaylist={true}
+          />
+        )}
       </div>
     </>
   );

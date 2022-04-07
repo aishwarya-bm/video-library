@@ -9,3 +9,4 @@ export { Search } from "./search/Search";
 export { Signup } from "./signup/Signup";
 export { Signin } from "./signup/Signin";
 export { Toast } from "./toast/Toast";
+export { PlaylistModal } from "./playlist-modal/PlaylistModal";
