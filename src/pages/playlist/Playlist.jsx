@@ -4,7 +4,6 @@ import "./playlist.css";
 import { Link, useNavigate } from "react-router-dom";
 import { getAllPlaylists, useVideoAction } from "../../contexts/index";
 import { useState } from "react";
-import videoImg from "../../assets/videoImg.jpg";
 
 export function Playlist() {
   const { playlist, dispatchAction } = useVideoAction();

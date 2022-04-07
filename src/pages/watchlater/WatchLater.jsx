@@ -7,7 +7,6 @@ import {
   getWatchLaterVideos,
   removeFromWatchLater,
 } from "../../contexts/index";
-import watchlater from "../../assets/watchlater.png";
 
 export function WatchLater() {
   const navigate = useNavigate();

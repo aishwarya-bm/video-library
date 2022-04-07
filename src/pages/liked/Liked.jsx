@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { MdDelete } from "react-icons/md";
 import { Header, SideNav } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
-import like from "../../assets/like.png";
 import {
   useVideoAction,
   getLikedVideos,

@@ -8,7 +8,6 @@ import {
   deletePlaylist,
   useVideoAction,
 } from "../../contexts";
-import videoImg from "../../assets/videoImg.jpg";
 
 export function PlaylistPage() {
   const [playlist, setPlaylist] = useState({});
