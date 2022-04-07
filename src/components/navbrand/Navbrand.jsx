@@ -9,7 +9,7 @@ export function Navbrand() {
         <Link to="/">
           <div className="nav-title d-flex children-center">
             <MdVideoLibrary className="nav-btn app-icon" size={40} />
-            Videoverse
+            BehindTheScenes
           </div>
         </Link>
       </div>

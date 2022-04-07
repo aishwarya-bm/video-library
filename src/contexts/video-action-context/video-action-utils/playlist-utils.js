@@ -203,7 +203,6 @@ const removeVideoFromPlaylist = async (
           authorization: localStorage.getItem("userToken"),
         },
       });
-      console.log(response);
       if (response.status === 200) {
         dispatchAction({
           type: "REMOVE_VIDEO_FROM_PLAYLIST",

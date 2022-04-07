@@ -75,14 +75,7 @@ export function VideoPage() {
               <span className="video-summary">Author:</span>{" "}
               <span>{video.author}</span>
             </div>
-            {/* <div>
-              <span className="video-summary">Likes:</span>
-              <span>{video.likes}</span>
-            </div>
-            <div>
-              <span className="video-summary">Views:</span>
-              <span>{video.views}</span>
-            </div> */}
+
             <div>
               <span className="video-summary">Description:</span>
               <span>{video.description}</span>

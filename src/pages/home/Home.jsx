@@ -17,7 +17,10 @@ export function Home() {
 
           <div className="home-welcome p-abs">
             <div className="text-center">
-              Welcome to <span className="banner-title">Videoverse</span>
+              Welcome to <span className="banner-title">BehindTheScenes</span>,
+              <span className="banner-caption">
+                <h5>the art of film making</h5>
+              </span>
             </div>
           </div>
         </div>

@@ -19,7 +19,7 @@ export function Categories() {
     <>
       <div>
         <div className="d-flex categories-home">
-          <h4 className="categories-home-heading">Browse categories</h4>
+          <h5 className="categories-home-heading">Browse categories</h5>
           <Link to="/explore/all">
             <button className="categories-home-all">See all</button>
           </Link>

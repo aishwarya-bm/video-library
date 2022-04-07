@@ -35,7 +35,7 @@ export function CategoryFilter() {
           style={getActiveStyle}
           className="category-name"
         >
-          Characters archetypes
+          Character archetypes
         </NavLink>
         <NavLink
           to="/explore/screenwriting"
