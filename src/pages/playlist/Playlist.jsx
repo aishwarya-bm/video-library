@@ -4,6 +4,7 @@ import "./playlist.css";
 import { Link, useNavigate } from "react-router-dom";
 import { getAllPlaylists, useVideoAction } from "../../contexts/index";
 import { useState } from "react";
+import videoImg from "../../assets/videoImg.jpg";
 
 export function Playlist() {
   const { playlist, dispatchAction } = useVideoAction();
@@ -28,18 +29,33 @@ export function Playlist() {
           </button>
         </div>
 
-        <ul className="custom-video-list d-flex list-no-bullet playlist">
-          {playlist &&
-            playlist?.map(({ _id, title }) => {
-              return (
-                <Link to={`/playlists/${_id}`} key={_id}>
-                  <li className="d-flex grid-gap children-center playlist-card">
-                    {title}
-                  </li>
-                </Link>
-              );
-            })}
-        </ul>
+        {playlist?.length === 0 ? (
+          <div className="not-found">
+            <h5 className="text-center">Your have 0 playlists!</h5>
+            <div className="d-flex children-center img-not-found">
+              <img
+                src="https://cdn.iconscout.com/icon/free/png-128/playlist-3265179-2777597.png"
+                alt="playlist-img"
+              />
+            </div>
+          </div>
+        ) : (
+          <>
+            {" "}
+            <ul className="custom-video-list d-flex list-no-bullet playlist">
+              {playlist &&
+                playlist?.map(({ _id, title }) => {
+                  return (
+                    <Link to={`/playlists/${_id}`} key={_id}>
+                      <li className="d-flex grid-gap children-center playlist-card">
+                        {title}
+                      </li>
+                    </Link>
+                  );
+                })}
+            </ul>
+          </>
+        )}
 
         {showModal && (
           <PlaylistModal isAddToPlaylist={false} setShowModal={setShowModal} />

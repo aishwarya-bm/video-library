@@ -7,6 +7,7 @@ import {
   getWatchLaterVideos,
   removeFromWatchLater,
 } from "../../contexts/index";
+import watchlater from "../../assets/watchlater.png";
 
 export function WatchLater() {
   const navigate = useNavigate();
@@ -19,40 +20,58 @@ export function WatchLater() {
       <SideNav />
 
       <div className="videolist-container d-grid">
-        <h4 className="text-center">Watch later - {watchLater.length}</h4>
-        <ul className="custom-video-list list-no-bullet d-grid ">
-          {watchLater &&
-            watchLater?.map(({ _id, title, author, thumnailHigh }) => {
-              return (
-                <div className="card card-hor" key={_id}>
-                  <div className="card-top d-flex">
-                    <Link to={`/explore/video/${_id}`}>
-                      <img
-                        className="card-image"
-                        src={thumnailHigh.url}
-                        alt="video-cover"
-                      />
-                    </Link>
-                    <Link to={`/explore/video/${_id}`}>
-                      <div className="card-header">
-                        <div className="card-title">{title}</div>
-                        <div className="card-author gray-text">{author}</div>
+        {!watchLater[0] ? (
+          <div className="not-found">
+            <h5 className="text-center">
+              Your have not saved videos to watch later!
+            </h5>
+            <div className="d-flex children-center img-not-found">
+              <img
+                src="https://cdn.iconscout.com/icon/free/png-256/watch-later-1891061-1597975.png"
+                alt="like-img"
+              />
+            </div>
+          </div>
+        ) : (
+          <>
+            <h4 className="text-center">Watch later - {watchLater.length}</h4>
+            <ul className="custom-video-list list-no-bullet d-grid ">
+              {watchLater &&
+                watchLater?.map(({ _id, title, author, thumnailHigh }) => {
+                  return (
+                    <div className="card card-hor" key={_id}>
+                      <div className="card-top d-flex">
+                        <Link to={`/explore/video/${_id}`}>
+                          <img
+                            className="card-image"
+                            src={thumnailHigh.url}
+                            alt="video-cover"
+                          />
+                        </Link>
+                        <Link to={`/explore/video/${_id}`}>
+                          <div className="card-header">
+                            <div className="card-title">{title}</div>
+                            <div className="card-author gray-text">
+                              {author}
+                            </div>
+                          </div>
+                        </Link>
+                        <button
+                          className="btn btn-link icon-trash p-abs"
+                          aria-hidden="true"
+                          onClick={() =>
+                            removeFromWatchLater(_id, dispatchAction, navigate)
+                          }
+                        >
+                          <MdDelete size={20} />
+                        </button>
                       </div>
-                    </Link>
-                    <button
-                      className="btn btn-link icon-trash p-abs"
-                      aria-hidden="true"
-                      onClick={() =>
-                        removeFromWatchLater(_id, dispatchAction, navigate)
-                      }
-                    >
-                      <MdDelete size={20} />
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
-        </ul>
+                    </div>
+                  );
+                })}
+            </ul>
+          </>
+        )}
       </div>
     </>
   );

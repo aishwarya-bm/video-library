@@ -8,6 +8,7 @@ import {
   deletePlaylist,
   useVideoAction,
 } from "../../contexts";
+import videoImg from "../../assets/videoImg.jpg";
 
 export function PlaylistPage() {
   const [playlist, setPlaylist] = useState({});
@@ -28,7 +29,6 @@ export function PlaylistPage() {
       console.log("error", e);
     }
   }
-
   useEffect(() => getPlaylistVideos(), [playlist]);
   return (
     <>
@@ -47,45 +47,62 @@ export function PlaylistPage() {
             Delete
           </button>
         </div>
-
-        <ul className="custom-video-list list-no-bullet d-grid ">
-          {videos &&
-            videos?.map(({ _id, title, videoId, author, thumnailHigh }) => {
-              return (
-                <div key={_id} className="card card-hor">
-                  <div className="card-top d-flex">
-                    <Link to={`/explore/video/${_id}`}>
-                      <img
-                        className="card-image"
-                        src={thumnailHigh.url}
-                        alt="video-cover"
-                      />
-                    </Link>
-                    <Link to={`/explore/video/${_id}`}>
-                      <div className="card-header">
-                        <div className="card-title">{title}</div>
-                        <div className="card-author gray-text">{author}</div>
+        {playlist?.videos?.length === 0 ? (
+          <div className="not-found">
+            <h5 className="text-center">
+              Your have no videos in this playlist!
+            </h5>
+            <div className="d-flex children-center img-not-found">
+              <img
+                src="https://cdn.iconscout.com/icon/free/png-128/video-marketing-page-optimization-youtube-seo-web-webpage-10-8213.png"
+                alt="video-img"
+              />
+            </div>
+          </div>
+        ) : (
+          <>
+            <ul className="custom-video-list list-no-bullet d-grid ">
+              {videos &&
+                videos?.map(({ _id, title, videoId, author, thumnailHigh }) => {
+                  return (
+                    <div key={_id} className="card card-hor">
+                      <div className="card-top d-flex">
+                        <Link to={`/explore/video/${_id}`}>
+                          <img
+                            className="card-image"
+                            src={thumnailHigh.url}
+                            alt="video-cover"
+                          />
+                        </Link>
+                        <Link to={`/explore/video/${_id}`}>
+                          <div className="card-header">
+                            <div className="card-title">{title}</div>
+                            <div className="card-author gray-text">
+                              {author}
+                            </div>
+                          </div>
+                        </Link>
+                        <button
+                          className="btn btn-link icon-trash p-abs"
+                          aria-hidden="true"
+                          onClick={() =>
+                            removeVideoFromPlaylist(
+                              playlistId,
+                              _id,
+                              dispatchAction,
+                              navigate
+                            )
+                          }
+                        >
+                          <MdDelete size={20} />
+                        </button>
                       </div>
-                    </Link>
-                    <button
-                      className="btn btn-link icon-trash p-abs"
-                      aria-hidden="true"
-                      onClick={() =>
-                        removeVideoFromPlaylist(
-                          playlistId,
-                          _id,
-                          dispatchAction,
-                          navigate
-                        )
-                      }
-                    >
-                      <MdDelete size={20} />
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
-        </ul>
+                    </div>
+                  );
+                })}
+            </ul>
+          </>
+        )}
       </div>
     </>
   );
