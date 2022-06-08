@@ -15,6 +15,9 @@ export function Liked() {
   const { isLoggedIn } = useLogin();
 
   useEffect(() => getLikedVideos(isLoggedIn, dispatchAction, navigate), []);
+  useEffect(() => {
+    document.title = "Liked | BehindTheScenes";
+  }, []);
   return (
     <>
       <Header />

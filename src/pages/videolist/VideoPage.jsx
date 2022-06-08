@@ -51,6 +51,9 @@ export function VideoPage() {
     getVideoDetails();
   }, []);
   useEffect(() => {
+    document.title = `Video | BehindTheScenes`;
+  }, []);
+  useEffect(() => {
     if (Object.keys(video).length && !isInhistory(id, history))
       addToHistory(isLoggedIn, video, dispatchAction, navigate);
   }, [video]);
@@ -143,7 +146,8 @@ export function VideoPage() {
             <MdPlaylistAdd size={25} />
           </button>
         </div>
-        <div>
+        {/* TODO: To implement notes section in future */}
+        {/* <div>
           <div className="notes-section d-flex children-stacked grid-gap">
             <h4 className="notes-title">Notes</h4>
             <input
@@ -160,7 +164,7 @@ export function VideoPage() {
               <button className="btn btn-light">Cancel</button>
             </div>
           </div>
-        </div>
+        </div> */}
         {showModal && (
           <PlaylistModal
             isAddToPlaylist={true}

@@ -16,6 +16,9 @@ export function Playlist() {
 
   const [showModal, setShowModal] = useState(false);
   useEffect(() => getAllPlaylists(isLoggedIn, dispatchAction, navigate), []);
+  useEffect(() => {
+    document.title = `Playlists | BehindTheScenes`;
+  }, []);
   return (
     <>
       <Header />

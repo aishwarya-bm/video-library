@@ -34,6 +34,9 @@ export function PlaylistPage() {
     }
   }
   useEffect(() => getPlaylistVideos(), [playlist]);
+  useEffect(() => {
+    document.title = `${title} | BehindTheScenes`;
+  }, [title]);
   return (
     <>
       <Header />

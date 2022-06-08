@@ -38,6 +38,9 @@ export function Videolist() {
   const filteredVideos = applyCategoryFilter();
 
   useEffect(() => getVideosList(), []);
+  useEffect(() => {
+    document.title = `Videos | BehindTheScenes`;
+  }, []);
 
   return (
     <>

@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import "./errorpage.css";
 
 export function ErrorPage() {
+  useEffect(()=>{
+    document.title="Error 404"
+  },[])
   return (
     <>
       <section className="text-center not-found">

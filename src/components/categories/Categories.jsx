@@ -62,4 +62,3 @@ export function Categories() {
     </>
   );
 }
-// export { Categories };

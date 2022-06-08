@@ -1,8 +1,12 @@
 import "../../App.css";
 import "./home.css";
 import { Categories, Header, SideNav } from "../../components";
+import { useEffect } from "react";
 
 export function Home() {
+  useEffect(() => {
+    document.title = "Home | BehindTheScenes";
+  }, []);
   return (
     <>
       <Header />

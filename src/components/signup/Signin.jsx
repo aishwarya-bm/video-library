@@ -34,7 +34,7 @@ export function Signin({ setIsSignUp }) {
   const handleTestLogin = e => {
     e.preventDefault();
     loginUser(
-      { email: "test@gmail.com", password: "test" },
+      { email: "aishwarya@gmail.com", password: "aishwarya" },
       dispatchUser,
       navigate
     );

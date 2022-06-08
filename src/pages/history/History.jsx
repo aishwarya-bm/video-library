@@ -17,6 +17,9 @@ export function History() {
   const { history, dispatchAction } = useVideoAction();
   const navigate = useNavigate();
   useEffect(() => getHistoryVideos(isLoggedIn, dispatchAction, navigate), []);
+  useEffect(() => {
+    document.title = "History | BehindTheScenes";
+  },[]);
   return (
     <>
       <Header />
